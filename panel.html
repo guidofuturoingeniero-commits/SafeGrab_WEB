@@ -1049,11 +1049,11 @@ dialog::backdrop{background:rgba(2,10,22,.82);backdrop-filter:blur(4px)}
     <section id="v-acciones" data-view class="view" hidden>
       <div class="topo" aria-hidden="true"></div>
       <header class="ph"><p class="eyebrow">05 / Acciones</p><h2 class="pg">Acciones remotas</h2><p class="pgs">Envía una orden al teléfono seleccionado. La recibe en cuanto tenga internet.</p></header>
-      <div class="note"><b>Aviso:</b> la versión actual de la app todavía no lee estas órdenes. Ya quedan registradas y se ejecutarán cuando la app las incluya.</div>
+      <div class="note"><b>Cómo funciona:</b> el teléfono revisa las órdenes cada minuto, siempre que la protección esté encendida y tenga internet. Si pasan 10 minutos sin que las recoja, la orden caduca para que no suene después. Con la app cerrada, <i>Ubicar ahora</i> necesita el permiso de ubicación “Permitir siempre”.</div>
       <div class="panel"><div class="cmds">
         <div class="cmd"><svg class="ico"><use href="#i-siren"/></svg><h4>Hacer sonar la sirena</h4><p>Suena al máximo volumen, aunque el teléfono esté en silencio.</p><button class="btn btn--p" data-cmd="ring" type="button">Hacer sonar</button></div>
         <div class="cmd"><svg class="ico"><use href="#i-target"/></svg><h4>Ubicar ahora</h4><p>Pide una ubicación nueva sin esperar al siguiente reporte.</p><button class="btn" data-cmd="locate" type="button">Ubicar ahora</button></div>
-        <div class="cmd"><svg class="ico"><use href="#i-lock"/></svg><h4>Bloquear pantalla</h4><p>Muestra un mensaje para quien lo tenga. No lo recomendamos con el teléfono en tus manos.</p>
+        <div class="cmd"><svg class="ico"><use href="#i-lock"/></svg><h4>Bloquear pantalla</h4><p>Bloquea el teléfono y deja tu mensaje a la vista sobre la pantalla de bloqueo. Solo se quita con tu PIN o huella.</p>
           <input class="inp" id="lock-msg" maxlength="120" placeholder="Este teléfono es robado. Llama al…" aria-label="Mensaje en la pantalla bloqueada">
           <button class="btn" data-cmd="lock" type="button">Bloquear</button></div>
       </div></div>
@@ -1549,14 +1549,19 @@ $("#f-contact").addEventListener("submit", function(e){
   m.hidden = true;
   api.addContact({name:name, phone:phone, relation:rel || null}).then(function(c){ S.contacts.push(c); renderContacts(); e.target.reset(); say("Contacto guardado.") }).catch(function(){ m.textContent = "No se pudo guardar. Inténtalo de nuevo."; m.hidden = false });
 });
-var CMD = {ring:"Sirena", locate:"Ubicar ahora", lock:"Bloquear pantalla"}, CST = {pending:["Pendiente", "warn"], done:["Ejecutada", "ok"], failed:["Falló", "bad"]};
+var CMD = {ring:"Sirena", locate:"Ubicar ahora", lock:"Bloquear pantalla"}, CST = {pending:["Pendiente", "warn"], received:["En el teléfono", "warn"], done:["Ejecutada", "ok"], failed:["Falló", "bad"]};
+function cmdState(c){
+  // Una orden pendiente que lleva más de 10 minutos sin ser recogida ya no se va a ejecutar.
+  if (c.status === "pending" && Date.now() - new Date(c.created_at).getTime() > 600000) return ["Sin respuesta", "bad"];
+  return CST[c.status] || [c.status, ""];
+}
 function renderCmds(){
   var box = $("#cmds"); clear(box);
   if (!S.cmds.length){ box.appendChild(h("div", {class:"empty"}, h("span", {text:"Todavía no has enviado órdenes a este teléfono."}))); return }
   S.cmds.forEach(function(c){
-    var st = CST[c.status] || [c.status, ""];
+    var st = cmdState(c);
     box.appendChild(h("div", {class:"row"}, h("span", {class:"badge badge--" + st[1], text:st[0]}),
-      h("div", {class:"row__t"}, h("b", {text:CMD[c.command] || c.command}), h("small", {text:when(c.created_at) + (c.payload && c.payload.message ? " · “" + c.payload.message + "”" : "")}))));
+      h("div", {class:"row__t"}, h("b", {text:CMD[c.command] || c.command}), h("small", {text:when(c.created_at) + (c.payload && c.payload.message ? " · “" + c.payload.message + "”" : "") + (c.result ? " · " + c.result : "")}))));
   });
 }
 $$("[data-cmd]").forEach(function(b){

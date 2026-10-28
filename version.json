@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "build": 1,
+  "released": "2026-10-27",
+  "apk_url": "https://github.com/guidofuturoingeniero-commits/SafeGrab_WEB/releases/latest/download/SafeGrab.apk",
+  "size_bytes": 61117953,
+  "sha256": "1294bb8ea1e56c622a10a19097e9cb12d3fdbd30d4f717b2e6d80aecbbadfcd2",
+  "min_android": null,
+  "notes": "Primera beta",
+  "signer_sha256": "ffe97e3faa65691934474d39f0dbdf366f20144f94bb1bf85694d2275eed868f"
+}

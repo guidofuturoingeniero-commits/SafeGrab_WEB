@@ -351,6 +351,27 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .cta .h2{margin-top:30px;max-width:14em}
 .cta .lead{margin-inline:auto}
 .cta .hero__cta{justify-content:center}
+.dl{width:min(680px,100%);margin-top:34px;text-align:left;background:rgba(218,234,255,.05);border:1px solid var(--linea-osc);border-radius:var(--r-lg);padding:clamp(20px,3vw,30px);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.dl[hidden]{display:none}
+.dl__meta{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.dl__meta li{padding:6px 12px;border-radius:999px;border:1px solid var(--linea-osc);font-size:.84rem;color:rgba(218,234,255,.82)}
+.dl__meta li:first-child{background:rgba(131,191,200,.14);border-color:rgba(131,191,200,.45);color:var(--hielo);font-weight:600}
+.dl__notes{margin:14px 0 0;font-size:.92rem;color:rgba(218,234,255,.78)}
+.dl__h{font-family:var(--f-display);font-weight:700;font-stretch:88%;font-size:1.3rem;letter-spacing:-.01em;margin:22px 0 4px}
+.dl__steps{list-style:none;margin:0;padding:0;counter-reset:dl}
+.dl__steps li{position:relative;padding:12px 0 12px 46px;border-top:1px solid var(--linea-osc);font-size:.94rem;color:rgba(218,234,255,.8);counter-increment:dl}
+.dl__steps li:first-child{border-top:0}
+.dl__steps li::before{content:counter(dl);position:absolute;left:0;top:11px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--hielo);color:var(--noche);font-weight:700;font-size:.9rem}
+.dl__steps b{color:var(--hielo);font-weight:600}
+.dl__steps a{color:var(--marina)}
+.dl__hash{margin-top:14px;border-top:1px solid var(--linea-osc);padding-top:12px}
+.dl__hash summary{cursor:pointer;font-weight:600;font-size:.92rem;color:var(--hielo)}
+.dl__hash p{font-size:.88rem;color:rgba(218,234,255,.72);margin:10px 0 8px}
+.dl__hash code{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.8rem;line-height:1.55;word-break:break-all;background:rgba(0,0,0,.28);border-radius:12px;padding:10px 12px;color:var(--marina)}
+.dl__copy{margin-top:10px;min-height:40px;padding:8px 16px;border-radius:999px;border:1.5px solid rgba(218,234,255,.38);background:transparent;color:var(--hielo);font:inherit;font-weight:600;font-size:.88rem;cursor:pointer}
+.dl__copy:hover{border-color:var(--hielo);background:rgba(218,234,255,.08)}
+.dl__upd{margin:14px 0 0;font-size:.86rem;color:rgba(218,234,255,.64)}
+.cta .hero__note a{color:var(--marina)}
 .ftr{background:#020d1b;color:rgba(218,234,255,.7);padding-block:44px;font-size:.9rem}
 .ftr__in{display:grid;gap:24px}
 @media (min-width:820px){.ftr__in{grid-template-columns:1fr auto;align-items:center}}
@@ -961,7 +982,31 @@ main{overflow-x:clip}
       <a class="btn btn--primary" href="#descargar" id="dl" data-download>Descargar para Android</a>
       <span class="btn btn--off" aria-disabled="true">Google Play, pronto</span>
     </div>
-    <p class="hero__note">Es un archivo APK de prueba. Android te pedirá permitir la instalación desde esta fuente.</p>
+    <p class="hero__note" id="dl-note">Es un archivo APK de prueba. Android te pedirá permitir la instalación desde esta fuente. Al instalarla aceptas la <a href="privacidad.html">política de privacidad</a>.</p>
+
+    <div class="dl" id="dl-info" hidden>
+      <ul class="dl__meta" aria-label="Datos de la descarga">
+        <li id="dl-ver"></li>
+        <li id="dl-size"></li>
+        <li id="dl-date"></li>
+        <li id="dl-and"></li>
+      </ul>
+      <p class="dl__notes" id="dl-notes" hidden></p>
+      <h3 class="dl__h">Instálala en 4 pasos</h3>
+      <ol class="dl__steps">
+        <li><b>Descarga el archivo.</b> Si tu navegador avisa que «este tipo de archivo puede dañar tu dispositivo», elige <em>Descargar de todos modos</em>: es normal con las apps que no vienen de Google Play.</li>
+        <li><b>Ábrelo y permite la instalación.</b> Android te pedirá permitir «Instalar apps desconocidas» a tu navegador (o a la app Archivos). Actívalo solo para instalar SafeGrab.</li>
+        <li><b>Si aparece Google Play Protect,</b> toca <em>Más detalles</em> y luego <em>Instalar de todos modos</em>. Sale porque la app todavía no está en Google Play.</li>
+        <li><b>Ábrela y crea tu cuenta.</b> La <a href="pasos.html">guía de uso</a> te explica los permisos y cómo evitar que Android cierre la protección.</li>
+      </ol>
+      <details class="dl__hash">
+        <summary>Verificar que el archivo es el original</summary>
+        <p>Esta es la huella SHA-256 del archivo publicado. Si tu archivo descargado da otra, no lo instales.</p>
+        <code id="dl-sha"></code>
+        <button type="button" class="dl__copy" id="dl-copy">Copiar huella</button>
+      </details>
+      <p class="dl__upd">¿Venías de una versión de prueba anterior y Android dice «conflicto con un paquete existente»? Desinstala la anterior una sola vez y vuelve a instalar; desde esta versión las actualizaciones se instalan encima, sin perder tus datos.</p>
+    </div>
   </div>
 </section>
 
@@ -981,6 +1026,8 @@ main{overflow-x:clip}
       <a href="#ruta">Hoja de ruta</a>
       <a href="#preguntas">Preguntas</a>
       <a href="pasos.html">Cómo usarla</a>
+      <a href="privacidad.html">Política de privacidad</a>
+      <a href="terminos.html">Términos de uso</a>
     </nav>
   </div>
 </footer>
@@ -991,11 +1038,12 @@ main{overflow-x:clip}
 (function(){
   "use strict";
 
-  /* ============ CONFIGURA AQUÍ ============
-     Pega el enlace de descarga del APK (por ejemplo, de Google Drive o de tu hosting).
-     Mientras esté vacío, los botones de descarga avisan que aún no está disponible. */
+  /* ============ CONFIGURA AQUÍ (opcional) ============
+     Normalmente NO hace falta tocar nada: el botón de descarga se activa solo cuando
+     existe el archivo version.json junto a esta página (lo genera tools/publish_apk.py).
+     Si prefieres un enlace fijo sin version.json, pégalo aquí. */
   var APK_URL = "";
-  /* ======================================== */
+  /* ===================================================== */
 
   var $ = function(s,c){return (c||document).querySelector(s)};
   var $$ = function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
@@ -1021,10 +1069,62 @@ main{overflow-x:clip}
     toast.textContent = msg; toast.classList.add("on");
     clearTimeout(toastT); toastT = setTimeout(function(){ toast.classList.remove("on") }, 3600);
   }
+  var dlBtn = $("#dl"), dlInfo = $("#dl-info"), dlReady = false;
+  /* Los botones del inicio llevan a la sección con las instrucciones; solo el de esa
+     sección descarga el archivo. Mientras no haya descarga, avisan. */
   $$("[data-download]").forEach(function(a){
-    if (APK_URL) { a.setAttribute("href", APK_URL); a.setAttribute("download", ""); return; }
-    a.addEventListener("click", function(){ say("La descarga de la beta estará disponible pronto."); });
+    a.addEventListener("click", function(e){
+      if (dlReady) return;
+      if (a === dlBtn) e.preventDefault();
+      say("La descarga de la beta estará disponible pronto.");
+    });
   });
+  function setText(sel, txt){ var el = $(sel); if (el) el.textContent = txt }
+  function enableDownload(v){
+    dlReady = true;
+    dlBtn.setAttribute("href", v.apk_url);
+    dlBtn.setAttribute("download", "SafeGrab.apk");
+    dlBtn.setAttribute("rel", "noopener");
+    var mb = typeof v.size_bytes === "number" && v.size_bytes > 0
+      ? (v.size_bytes / 1048576).toLocaleString("es-PE", {maximumFractionDigits: 1}) + " MB" : "";
+    if (v.version){
+      dlBtn.textContent = "Descargar SafeGrab " + v.version + (mb ? " · " + mb : "");
+      setText("#dl-ver", "Versión " + v.version + " (beta)");
+    }
+    setText("#dl-size", mb);
+    var d = v.released && /^\d{4}-\d{2}-\d{2}$/.test(v.released) ? new Date(v.released + "T12:00:00") : null;
+    setText("#dl-date", d && !isNaN(d) ? d.toLocaleDateString("es-PE", {day: "numeric", month: "long", year: "numeric"}) : "");
+    setText("#dl-and", v.min_android ? "Android " + v.min_android + " o superior" : "Solo Android");
+    var shown = 0;
+    $$(".dl__meta li", dlInfo).forEach(function(li){ li.hidden = !li.textContent; if (li.textContent) shown++ });
+    $(".dl__meta").hidden = !shown;
+    if (typeof v.notes === "string" && v.notes.trim()){
+      setText("#dl-notes", "Novedades: " + v.notes.trim()); $("#dl-notes").hidden = false;
+    }
+    if (typeof v.sha256 === "string" && /^[0-9a-f]{64}$/i.test(v.sha256)){
+      setText("#dl-sha", v.sha256.toUpperCase().replace(/(.{8})(?=.)/g, "$1 "));
+      $("#dl-copy").addEventListener("click", function(){
+        var raw = v.sha256.toUpperCase();
+        try { navigator.clipboard.writeText(raw).then(function(){ say("Huella copiada.") }, function(){ say("No se pudo copiar. Selecciónala a mano.") }) }
+        catch (e) { say("No se pudo copiar. Selecciónala a mano.") }
+      });
+    } else {
+      $(".dl__hash").hidden = true;
+    }
+    dlInfo.hidden = false;
+    var note = $("#dl-note");
+    note.textContent = "";
+    note.appendChild(document.createTextNode("Beta cerrada: si algo falla en tu teléfono, cuéntanoslo. Al instalarla aceptas la "));
+    var pa = document.createElement("a"); pa.href = "privacidad.html"; pa.textContent = "política de privacidad";
+    note.appendChild(pa); note.appendChild(document.createTextNode("."));
+  }
+  if (APK_URL && /^https:\/\//.test(APK_URL)) enableDownload({apk_url: APK_URL});
+  else if (window.fetch) {
+    fetch("version.json", {cache: "no-store"})
+      .then(function(r){ return r.ok ? r.json() : null })
+      .then(function(v){ if (v && typeof v.apk_url === "string" && /^https:\/\//.test(v.apk_url)) enableDownload(v) })
+      .catch(function(){});
+  }
 
   /* ---------- Demostración del teléfono ---------- */
   var hero = $("#inicio"), stage = $("#stage"), phone = $("#phone"), sensor = $("#sensor"), sim = $("#sim"), status = $("#demo-status");
@@ -1700,7 +1800,7 @@ main{overflow-x:clip}
   /* ---------- Apariciones al hacer scroll ---------- */
   var groups = [
     [".sec-head .lead", 0], [".step", 1], [".card", 1], [".lock__phone", 0, "rv--l"], [".lock > div:last-child .lead, .lock .keep li, .lock__note", 1, "rv--r"],
-    [".gest", 1], [".detect__ctl, .sens", 0], [".plist > *", 1], [".road .col", 1], [".faq details", 1], [".cta .lead, .cta .hero__cta, .cta .hero__note", 1]
+    [".gest", 1], [".detect__ctl, .sens", 0], [".plist > *", 1], [".road .col", 1], [".faq details", 1], [".cta .lead, .cta .hero__cta, .cta .hero__note, .cta .dl", 1]
   ];
   var targets = [];
   groups.forEach(function(g){

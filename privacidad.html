@@ -306,10 +306,11 @@ main{overflow-x:clip}
       <tr><td data-l="Dato">Tu cuenta</td><td data-l="Cuándo">Al registrarte</td><td data-l="Para qué">Tu nombre, tu correo y tu contraseña (que se guarda cifrada: nadie del equipo puede verla) sirven para entrar a la app y al panel. Opcionalmente, tu número de teléfono.</td></tr>
       <tr><td data-l="Dato">Contactos de confianza</td><td data-l="Cuándo">Los que tú agregas</td><td data-l="Para qué">Nombre, número y relación de las personas a quienes se manda el SMS de emergencia. No leemos tu agenda de contactos: solo existen los que escribes tú.</td></tr>
       <tr><td data-l="Dato">Tu ubicación</td><td data-l="Cuándo">Con la app abierta, y con la protección encendida si das «Permitir siempre»</td><td data-l="Para qué">Mostrarla en el mapa y en tu panel, y mandarla por SMS a tus contactos en una emergencia. Con «Permitir siempre» se envía con la app cerrada: una vez cada 5 minutos en reposo y cada 10 segundos durante una emergencia.</td></tr>
-      <tr><td data-l="Dato">Video y audio</td><td data-l="Cuándo">Solo durante una emergencia</td><td data-l="Para qué">La cámara frontal y el micrófono graban para dejar evidencia. Se suben a tu panel privado. Fuera de una emergencia no graban.</td></tr>
+      <tr><td data-l="Dato">Video y audio</td><td data-l="Cuándo">Solo durante una emergencia</td><td data-l="Para qué">La cámara frontal y el micrófono graban para dejar evidencia. Se suben a tu cuenta privada y se guardan siempre; con el plan Security las ves y las descargas desde el panel. Fuera de una emergencia no graban.</td></tr>
       <tr><td data-l="Dato">Movimiento del teléfono</td><td data-l="Cuándo">Con la protección encendida</td><td data-l="Para qué">El acelerómetro y el giroscopio se analizan dentro del teléfono para detectar un jalón. No se envían. De cada alerta solo se guarda el valor máximo que la disparó.</td></tr>
       <tr><td data-l="Dato">Datos del teléfono</td><td data-l="Cuándo">Al vincularlo y cada vez que reporta</td><td data-l="Para qué">Modelo, versión de Android, nivel de batería, si está cargando, si la protección está activa y la hora de la última conexión. Sirven para mostrarte el estado en el panel.</td></tr>
       <tr><td data-l="Dato">Alertas y órdenes</td><td data-l="Cuándo">Cuando ocurren</td><td data-l="Para qué">Hora, ubicación y estado de cada alerta; y las órdenes que mandas desde el panel (sonar, bloquear, ubicar) con su resultado.</td></tr>
+      <tr><td data-l="Dato">Plan y pagos</td><td data-l="Cuándo">Cuando compras un plan</td><td data-l="Para qué">Qué plan tienes y hasta cuándo, y por cada pago: la fecha, el monto, el plan y la referencia del cobro en Culqi. <strong>No guardamos el número ni los datos de tu tarjeta</strong>: los recibe directamente Culqi.</td></tr>
       <tr><td data-l="Dato">Informes de fallos</td><td data-l="Cuándo">Cuando la app falla, o cuando tú reportas un problema</td><td data-l="Para qué">Un informe técnico con el modelo, la versión de Android y de la app, el texto del error y el identificador del teléfono (si está vinculado). Si escribes un reporte a mano, también lo que escribas. Sirve para arreglar errores.</td></tr>
     </tbody>
   </table></div>
@@ -341,6 +342,7 @@ main{overflow-x:clip}
     <thead><tr><th>Quién</th><th>Qué recibe</th><th>Por qué</th></tr></thead>
     <tbody>
       <tr><td data-l="Quién">Supabase</td><td data-l="Qué recibe">Todo lo que guarda tu cuenta: datos de la cuenta, contactos, ubicaciones, alertas y grabaciones.</td><td data-l="Por qué">Es el servicio de base de datos, almacenamiento y acceso de SafeGrab. Sus servidores están en São Paulo (Brasil), por lo que tus datos se guardan fuera del Perú.</td></tr>
+      <tr><td data-l="Quién">Culqi</td><td data-l="Qué recibe">Los datos de pago que escribes en su ventana (tarjeta o Yape), tu correo y el monto del plan.</td><td data-l="Por qué">Es la pasarela que procesa el cobro del plan Security. Sus servidores pueden estar fuera del Perú. Culqi trata esos datos según sus propias condiciones; SafeGrab solo recibe la confirmación del pago.</td></tr>
       <tr><td data-l="Quién">Tus contactos de confianza</td><td data-l="Qué recibe">Un SMS con tu nombre, tu ubicación y la hora.</td><td data-l="Por qué">Es el aviso de emergencia que tú configuras. El SMS sale de la línea de tu teléfono y gasta tu saldo o plan de SMS.</td></tr>
       <tr><td data-l="Quién">OpenStreetMap</td><td data-l="Qué recibe">Las coordenadas de la zona que se dibuja o de la que se busca la dirección, y tu dirección IP.</td><td data-l="Por qué">Dibujar el mapa y mostrar una dirección aproximada, en la app y en el panel.</td></tr>
       <tr><td data-l="Quién">GitHub</td><td data-l="Qué recibe">Tu dirección IP cuando visitas esta página o descargas el APK.</td><td data-l="Por qué">Aloja la página web y el archivo de instalación.</td></tr>
@@ -361,6 +363,7 @@ main{overflow-x:clip}
       <tr><td data-l="Dato">Historial de ubicación</td><td data-l="Cuánto tiempo">30 días; después se borra solo. La última posición de tu teléfono se mantiene mientras esté vinculado.</td></tr>
       <tr><td data-l="Dato">Alertas y órdenes</td><td data-l="Cuánto tiempo">Hasta que elimines el teléfono desde el panel o pidas borrar tu cuenta.</td></tr>
       <tr><td data-l="Dato">Grabaciones de video y audio</td><td data-l="Cuánto tiempo">Hasta que las elimines desde el panel, elimines el teléfono o pidas borrar tu cuenta. Te recomendamos borrarlas cuando ya no las necesites.</td></tr>
+      <tr><td data-l="Dato">Plan y pagos</td><td data-l="Cuánto tiempo">El registro de pagos se conserva el tiempo que exijan las normas contables y tributarias, aunque borres tu cuenta (en ese caso queda sin vínculo con tu cuenta).</td></tr>
       <tr><td data-l="Dato">Informes de fallos</td><td data-l="Cuánto tiempo">90 días; después se borran solos.</td></tr>
     </tbody>
   </table></div>
@@ -403,8 +406,8 @@ main{overflow-x:clip}
   <h3>Lo que puedes hacer tú mismo</h3>
   <ul class="l">
     <li><strong>Ver y corregir</strong> tu nombre y tus contactos de confianza, desde el Perfil de la app.</li>
-    <li><strong>Borrar grabaciones</strong> una por una desde el panel web.</li>
-    <li><strong>Eliminar un teléfono</strong> desde el panel: se borran también su historial de ubicación, sus alertas y sus grabaciones.</li>
+    <li><strong>Borrar grabaciones</strong> una por una desde el panel web (con el plan Básico las grabaciones están bloqueadas: para borrarlas escríbenos o activa Security).</li>
+    <li><strong>Eliminar un teléfono</strong> desde el panel: se borran también su historial de ubicación, sus alertas y sus grabaciones (si tienes el plan Básico y el teléfono tiene grabaciones, escríbenos y lo borramos).</li>
     <li><strong>Retirar tu aceptación</strong> en la app, en Ajustes → Privacidad y datos: se apaga la protección y se cierra tu sesión en ese teléfono. Tus datos siguen guardados hasta que los borres o pidas borrar la cuenta.</li>
     <li><strong>Quitar cualquier permiso</strong> en los ajustes de Android.</li>
   </ul>

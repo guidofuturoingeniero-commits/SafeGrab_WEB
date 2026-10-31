@@ -925,6 +925,125 @@ dialog::backdrop{background:rgba(2,10,22,.82);backdrop-filter:blur(4px)}
 .legalinks{margin:14px 0 0;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;color:var(--faint)}
 .legalinks a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .legalinks a:hover{color:var(--hielo)}
+
+/* =====================================================================
+   PLAN, PAGO Y BLOQUEOS
+   ===================================================================== */
+.bnav{grid-template-columns:repeat(7,1fr)}
+.bnav a{font-size:.5rem;letter-spacing:.02em}
+.planbar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;padding:12px 18px;margin-top:16px;border-radius:16px;background:rgba(246,176,60,.1);border:1px solid rgba(246,176,60,.4);color:#FFE2A6;font-family:var(--f-mono);font-size:.76rem;letter-spacing:.02em}
+.planbar .btn{border-color:rgba(246,176,60,.6);color:#FFE2A6}
+
+.planstat{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;padding:18px 22px;margin-bottom:20px;border-radius:24px;background:var(--s1);border:1px solid var(--line)}
+.planstat__m{display:grid;gap:2px;min-width:140px}
+.planstat__m small{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.planstat__m b{font-family:var(--f-disp);font-stretch:80%;font-weight:700;font-size:1.7rem;line-height:1.05;color:#fff}
+.planstat__m b.ok{color:#7BE3A0}
+.planstat__m span{font-family:var(--f-mono);font-size:.72rem;color:var(--body)}
+
+.plans{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-bottom:12px;align-items:stretch}
+.plan{position:relative;display:grid;gap:14px;align-content:start;padding:26px 24px 24px;border-radius:24px;background:var(--s1);border:1px solid var(--line)}
+.plan--hot{border-color:var(--marina);background:linear-gradient(180deg,rgba(131,191,200,.1),var(--s1) 55%)}
+.plan--cur{box-shadow:0 0 0 2px var(--seguro) inset}
+.plan__tag{position:absolute;top:-11px;left:22px;padding:3px 10px;border-radius:4px;font-family:var(--f-mono);font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;background:var(--vivo);color:#fff}
+.plan__tag--cur{background:var(--seguro)}
+.plan h4{font-family:var(--f-disp);font-stretch:75%;font-weight:800;text-transform:uppercase;font-size:1.9rem;line-height:.95;color:#fff}
+.plan__price{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.plan__now{font-family:var(--f-disp);font-stretch:80%;font-weight:800;font-size:2.8rem;line-height:1;color:#fff;letter-spacing:-.01em}
+.plan__old{font-family:var(--f-mono);font-size:.84rem;color:var(--faint);text-decoration:line-through}
+.plan__per{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.04em;color:var(--body);flex-basis:100%}
+.plan__off{display:inline-block;padding:2px 8px;border-radius:4px;background:rgba(46,184,92,.2);color:#9CEBB9;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
+.plan__ul{display:grid;gap:8px;font-size:.88rem}
+.plan__ul li{display:flex;gap:9px;align-items:flex-start}
+.plan__ul .ico{width:1.05em;height:1.05em;margin-top:.28em;color:var(--seguro)}
+.plan__ul li.no{color:var(--faint)}.plan__ul li.no .ico{color:var(--faint)}
+.plan .btn{align-self:end;justify-self:stretch;margin-top:4px}
+.plans__fine{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.02em;color:var(--faint);margin-bottom:22px;max-width:60em}
+
+.cmp{display:grid}
+.cmp__r{display:grid;grid-template-columns:minmax(0,1fr) 78px 78px;gap:8px;align-items:center;padding:12px 20px;border-top:1px solid var(--line);font-size:.88rem}
+.cmp__r:first-child{border-top:0}
+.cmp__r span:not(:first-child){text-align:center;font-family:var(--f-mono);color:var(--hielo)}
+.cmp__r--h{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.cmp__r .y{color:#7BE3A0!important}.cmp__r .n{color:var(--faint)!important}
+@media(max-width:420px){.cmp__r{grid-template-columns:minmax(0,1fr) 58px 58px;padding:12px 14px}}
+
+.lockbox{display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;padding:18px 22px;margin-bottom:20px;border-radius:20px;background:rgba(228,72,95,.08);border:1px solid rgba(228,72,95,.4)}
+.lockbox .ico{width:38px;height:38px;padding:9px;border:1.5px solid var(--vivo);border-radius:50%;color:#FFB3BF}
+.lockbox__t{flex:1;min-width:210px;display:grid;gap:2px}
+.lockbox__t b{font-family:var(--f-disp);font-stretch:80%;font-weight:700;font-size:1.35rem;line-height:1.05;color:#fff}
+.lockbox__t span{font-size:.86rem}
+.rec--lock .rec__ph{filter:saturate(.4)}
+.rec--lock .rec__ph::after{background:rgba(4,22,44,.78)}
+.rec--lock .rec__ph .ico{width:34px;height:34px}
+.cmds.is-locked .cmd{opacity:.5}
+.cmds.is-locked .cmd h4::after{content:" · Security";font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ambar);font-weight:500}
+
+/* ---------- Pantalla de pago con el ladrón ---------- */
+.pay{position:fixed;inset:0;z-index:1400;display:grid;place-items:center;padding:14px;background:rgba(2,10,22,.86);backdrop-filter:blur(4px);overflow-y:auto}
+.pay__box{width:min(720px,100%);display:grid;gap:8px 28px;grid-template-columns:minmax(0,260px) minmax(0,1fr);align-items:center;padding:26px;border-radius:28px;background:var(--s1);border:1px solid var(--line-2)}
+@media(max-width:640px){.pay__box{grid-template-columns:1fr;padding:20px 18px;gap:4px}.pay__art{max-width:210px;margin-inline:auto}}
+.pay__art svg{width:100%;height:auto;display:block;overflow:visible}
+.pay__txt{display:grid;gap:12px;min-width:0}
+.pay__txt h3{font-family:var(--f-disp);font-stretch:75%;font-weight:800;text-transform:uppercase;font-size:clamp(1.9rem,1.2rem + 2.4vw,2.7rem);line-height:.92;color:#fff}
+.pay__p{color:var(--body)}
+.pay__sum{display:grid;gap:6px;padding:12px 14px;border-radius:12px;background:var(--bg-deep);border:1px solid var(--line);font-family:var(--f-mono);font-size:.78rem;color:var(--hielo)}
+.pay__sum:empty{display:none}
+.pay__sum div{display:flex;justify-content:space-between;gap:12px}
+.pay__sum div b{font-weight:500;color:#fff}
+.pay__a{display:flex;flex-wrap:wrap;gap:10px}
+.pay__a .btn{flex:1 1 150px}
+.pay__busy{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* El ladrón: la cara y lo que hace cambian según el estado (wait, proc, ok, err) */
+.th *{transform-box:fill-box;transform-origin:center}
+.th__m,.th__tear,.th__chk,.th__ring{opacity:0}
+.th[data-s=wait] .th__m--w,.th[data-s=proc] .th__m--w{opacity:1}
+.th[data-s=ok] .th__m--s{opacity:1}
+.th[data-s=err] .th__m--g{opacity:1}
+/* cejas */
+.th__brow--l{transform:translateY(-1px) rotate(-18deg)}.th__brow--r{transform:translateY(-1px) rotate(18deg)}
+.th[data-s=proc] .th__brow--l{transform:translateY(-3px) rotate(-26deg)}.th[data-s=proc] .th__brow--r{transform:translateY(-3px) rotate(26deg)}
+.th[data-s=ok] .th__brow--l{transform:translateY(-2px) rotate(-30deg)}.th[data-s=ok] .th__brow--r{transform:translateY(-2px) rotate(30deg)}
+.th[data-s=err] .th__brow--l{transform:translateY(2px) rotate(10deg)}.th[data-s=err] .th__brow--r{transform:translateY(-4px) rotate(-12deg)}
+.th__brow{transition:transform .35s}
+/* pupilas: miran a los lados, nerviosas */
+.th[data-s=wait] .th__pup{animation:thLook 2.6s ease-in-out infinite}
+.th[data-s=proc] .th__pup{animation:thLook 1s ease-in-out infinite}
+.th[data-s=ok] .th__pup{transform:translateY(3px)}
+.th[data-s=err] .th__pup{transform:translateX(3px)}
+@keyframes thLook{0%,100%{transform:translateX(-2.5px)}50%{transform:translateX(2.5px)}}
+/* sudor */
+.th__sweat{opacity:0}
+.th[data-s=wait] .th__sweat,.th[data-s=proc] .th__sweat{animation:thSweat 1.9s ease-in infinite}
+.th[data-s=proc] .th__sweat{animation-duration:1.1s}
+.th__sweat--2{animation-delay:.7s!important}
+@keyframes thSweat{0%{opacity:0;transform:translateY(-4px)}20%{opacity:1}100%{opacity:0;transform:translateY(22px)}}
+/* lágrimas */
+.th[data-s=ok] .th__tear{opacity:1;animation:thTear 1.5s ease-in infinite}
+.th__tear--r{animation-delay:.5s!important}
+@keyframes thTear{0%{opacity:0;transform:translateY(-3px)}25%{opacity:1}100%{opacity:0;transform:translateY(26px)}}
+/* celular robado: tiembla de nervios */
+.th[data-s=wait] .th__phone{animation:thShake 2.2s ease-in-out infinite}
+.th[data-s=proc] .th__phone{animation:thShake .22s linear infinite}
+@keyframes thShake{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+.th[data-s=err] .th__phone{animation:thSwing 1.6s ease-in-out infinite;transform-origin:50% 100%}
+@keyframes thSwing{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+/* respiración y bufanda */
+.th__tail{animation:thTail 2.4s ease-in-out infinite;transform-origin:20% 0}
+@keyframes thTail{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(5deg)}}
+.th[data-s=proc] .th__body{animation:thJit .3s linear infinite}
+@keyframes thJit{0%,100%{transform:translateX(-.6px)}50%{transform:translateX(.6px)}}
+/* pago confirmado: se le cae el botín, agacha la cabeza y el celular queda protegido */
+.th__sack,.th__head{transition:transform .5s}
+.th[data-s=ok] .th__sack{transform:translateY(46px) rotate(24deg);opacity:0;animation:thDrop 1.1s ease-in both}
+@keyframes thDrop{0%{opacity:1;transform:none}70%{opacity:1}100%{opacity:0;transform:translateY(46px) rotate(24deg)}}
+.th[data-s=ok] .th__head{transform:translateY(5px) rotate(-5deg)}
+.th[data-s=ok] .th__chk{opacity:1}
+.th[data-s=ok] .th__ring{opacity:1;animation:thRing 1.8s ease-out infinite}
+@keyframes thRing{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.35);opacity:0}}
+.th[data-s=err] .th__head{transform:rotate(4deg)}
 </style>
 </head>
 <body>
@@ -944,6 +1063,7 @@ dialog::backdrop{background:rgba(2,10,22,.82);backdrop-filter:blur(4px)}
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9.5" rx="2.2"/><path d="M8 11V8a4 4 0 018 0v3"/></symbol>
   <symbol id="i-siren" viewBox="0 0 24 24"><path d="M7 18v-5a5 5 0 0110 0v5"/><path d="M5 18h14v3H5z"/><path d="M12 3v2M4.6 6.6l1.5 1.3M19.4 6.6l-1.5 1.3"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
   <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3"/></symbol>
 </defs></svg>
 
@@ -1012,6 +1132,8 @@ dialog::backdrop{background:rgba(2,10,22,.82);backdrop-filter:blur(4px)}
       <button class="btn btn--sm" id="al-ok" type="button"><svg class="ico"><use href="#i-check"/></svg>Marcar como resuelta</button>
     </div>
 
+    <div class="planbar" id="planbar" hidden><span id="pb-t"></span><a class="btn btn--sm" href="#plan" id="pb-a">Renovar</a></div>
+
     <!-- Resumen -->
     <section id="v-resumen" data-view class="view" hidden>
       <div class="topo" aria-hidden="true"></div>
@@ -1041,6 +1163,7 @@ dialog::backdrop{background:rgba(2,10,22,.82);backdrop-filter:blur(4px)}
     <section id="v-grabaciones" data-view class="view" hidden>
       <div class="topo" aria-hidden="true"></div>
       <header class="ph"><p class="eyebrow">03 / Grabaciones</p><h2 class="pg">Grabaciones</h2><p class="pgs">Video y audio que el teléfono subió durante una emergencia. Solo tú puedes verlos.</p></header>
+      <div id="rec-up"></div>
       <div class="band" id="recs-p"><div class="topo" aria-hidden="true"></div><div id="recs"></div></div>
     </section>
 
@@ -1048,7 +1171,7 @@ dialog::backdrop{background:rgba(2,10,22,.82);backdrop-filter:blur(4px)}
     <section id="v-contactos" data-view class="view" hidden>
       <div class="topo" aria-hidden="true"></div>
       <header class="ph"><p class="eyebrow">04 / Contactos</p><h2 class="pg">Contactos de confianza</h2><p class="pgs">Las personas a quienes SafeGrab avisa cuando hay una emergencia.</p></header>
-      <div class="panel"><div class="panel__h"><h3>Agregar contacto</h3></div>
+      <div class="panel"><div class="panel__h"><h3>Agregar contacto</h3><span class="badge" id="c-count" hidden></span></div>
         <form class="form form--3" id="f-contact" novalidate>
           <div class="field"><label for="c-name">Nombre</label><input class="inp" id="c-name" maxlength="60" placeholder="Mamá" required></div>
           <div class="field"><label for="c-phone">Celular</label><input class="inp" id="c-phone" inputmode="tel" maxlength="20" placeholder="+51 999 999 999" required></div>
@@ -1065,7 +1188,8 @@ dialog::backdrop{background:rgba(2,10,22,.82);backdrop-filter:blur(4px)}
       <div class="topo" aria-hidden="true"></div>
       <header class="ph"><p class="eyebrow">05 / Acciones</p><h2 class="pg">Acciones remotas</h2><p class="pgs">Envía una orden al teléfono seleccionado. La recibe en cuanto tenga internet.</p></header>
       <div class="note"><b>Cómo funciona:</b> las órdenes llegan en pocos segundos (hasta un minuto si el teléfono tiene apagadas las «Órdenes rápidas» en Ajustes), siempre que la protección esté encendida y tenga internet. Si pasan 10 minutos sin que las recoja, la orden caduca para que no suene después. Con la app cerrada, <i>Ubicar ahora</i> necesita el permiso de ubicación “Permitir siempre”.</div>
-      <div class="panel"><div class="cmds">
+      <div id="acc-up"></div>
+      <div class="panel" id="cmds-p"><div class="cmds">
         <div class="cmd"><svg class="ico"><use href="#i-siren"/></svg><h4>Hacer sonar la sirena</h4><p>Suena al máximo volumen, aunque el teléfono esté en silencio.</p><button class="btn btn--p" data-cmd="ring" type="button">Hacer sonar</button></div>
         <div class="cmd"><svg class="ico"><use href="#i-target"/></svg><h4>Ubicar ahora</h4><p>Pide una ubicación nueva sin esperar al siguiente reporte.</p><button class="btn" data-cmd="locate" type="button">Ubicar ahora</button></div>
         <div class="cmd"><svg class="ico"><use href="#i-lock"/></svg><h4>Bloquear pantalla</h4><p>Bloquea el teléfono y deja tu mensaje a la vista sobre la pantalla de bloqueo. Solo se quita con tu PIN o huella.</p>
@@ -1079,13 +1203,101 @@ dialog::backdrop{background:rgba(2,10,22,.82);backdrop-filter:blur(4px)}
     <section id="v-telefonos" data-view class="view" hidden>
       <div class="topo" aria-hidden="true"></div>
       <header class="ph"><p class="eyebrow">06 / Teléfonos</p><h2 class="pg">Mis teléfonos</h2><p class="pgs">Los celulares vinculados a tu cuenta.</p></header>
-      <div class="panel"><div class="list" id="devs"></div></div>
+      <div class="panel"><div class="panel__h"><h3>Teléfonos vinculados</h3><span class="badge" id="d-count" hidden></span></div><div class="list" id="devs"></div></div>
       <div class="panel"><div class="panel__h"><h3>Cómo vincular un teléfono</h3></div>
         <ol class="steps"><li>Instala SafeGrab en el celular Android.</li><li>Entra en la app con este mismo correo y contraseña.</li><li>Activa la protección. El teléfono aparecerá aquí y empezará a reportar su ubicación.</li></ol>
       </div>
     </section>
+
+    <!-- Plan -->
+    <section id="v-plan" data-view class="view" hidden>
+      <div class="topo" aria-hidden="true"></div>
+      <header class="ph"><p class="eyebrow">07 / Plan</p><h2 class="pg">Tu plan</h2><p class="pgs">Con el plan Básico ves dónde está tu teléfono y recibes cada alerta. Con Security, además, ves y descargas lo que grabó y lo controlas a distancia.</p></header>
+      <div class="note" id="plan-test" hidden><b>Pagos en modo de prueba.</b> Todavía no se cobra dinero real: sirve para probar el flujo con tarjetas de prueba.</div>
+      <div class="planstat" id="plan-st"></div>
+      <div class="plans" id="plans"></div>
+      <p class="plans__fine" id="plans-fine"></p>
+      <div class="panel"><div class="panel__h"><h3>Qué incluye cada plan</h3></div>
+        <div class="cmp" role="table" aria-label="Comparación de planes">
+          <div class="cmp__r cmp__r--h" role="row"><span role="columnheader">Función</span><span role="columnheader">Básico</span><span role="columnheader">Security</span></div>
+          <div class="cmp__r" role="row"><span role="cell">Detección de arrebato y alertas</span><span role="cell" class="y"><i class="sr">Incluido</i>✓</span><span role="cell" class="y"><i class="sr">Incluido</i>✓</span></div>
+          <div class="cmp__r" role="row"><span role="cell">Ubicación y recorrido en el mapa</span><span role="cell" class="y"><i class="sr">Incluido</i>✓</span><span role="cell" class="y"><i class="sr">Incluido</i>✓</span></div>
+          <div class="cmp__r" role="row"><span role="cell">Teléfonos vinculados</span><span role="cell">1</span><span role="cell">3</span></div>
+          <div class="cmp__r" role="row"><span role="cell">Contactos de confianza</span><span role="cell">2</span><span role="cell">10</span></div>
+          <div class="cmp__r" role="row"><span role="cell">Ver, reproducir y descargar el video y el audio</span><span role="cell" class="n"><i class="sr">No incluido</i>—</span><span role="cell" class="y"><i class="sr">Incluido</i>✓</span></div>
+          <div class="cmp__r" role="row"><span role="cell">Hacer sonar, ubicar y bloquear a distancia</span><span role="cell" class="n"><i class="sr">No incluido</i>—</span><span role="cell" class="y"><i class="sr">Incluido</i>✓</span></div>
+        </div>
+      </div>
+      <div class="panel"><div class="panel__h"><h3>Mis pagos</h3></div><div class="list" id="pays"></div></div>
+    </section>
   </div>
   <nav class="bnav" aria-label="Secciones" id="nav-bot"></nav>
+</div>
+
+
+<div class="pay" id="pay" role="dialog" aria-modal="true" aria-labelledby="pay-t" hidden>
+  <div class="pay__box">
+    <div class="pay__art">
+      <svg class="th" id="th" data-s="wait" viewBox="0 0 240 220" role="img" aria-label="Un ladrón de caricatura, con cara de preocupado">
+        <defs><radialGradient id="th-glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#83BFC8" stop-opacity=".28"/><stop offset="1" stop-color="#83BFC8" stop-opacity="0"/></radialGradient></defs>
+        <circle cx="120" cy="112" r="104" fill="url(#th-glow)"/>
+        <ellipse cx="120" cy="208" rx="62" ry="7" fill="#020E1F" opacity=".7"/>
+        <!-- bolsa del botín -->
+        <g class="th__sack"><path d="M42 196c-14-6-18-24-8-36 4-5 9-8 12-12l-4-9 11 4 9-4-3 10c4 4 9 7 12 12 9 12 5 30-8 36z" fill="#8A6B45" stroke="#C9A877" stroke-width="2" stroke-linejoin="round"/><path d="M38 139l8 4 8-3" fill="none" stroke="#E4485F" stroke-width="3" stroke-linecap="round"/><text x="46" y="182" text-anchor="middle" font-family="Bricolage,sans-serif" font-weight="800" font-size="24" fill="#3E2C14">$</text></g>
+        <!-- piernas -->
+        <g class="th__body">
+          <rect x="97" y="160" width="19" height="42" rx="8" fill="#02070F" stroke="#2A4A75" stroke-width="2"/>
+          <rect x="124" y="160" width="19" height="42" rx="8" fill="#02070F" stroke="#2A4A75" stroke-width="2"/>
+          <rect x="93" y="196" width="26" height="10" rx="5" fill="#E4485F"/>
+          <rect x="121" y="196" width="26" height="10" rx="5" fill="#E4485F"/>
+          <!-- brazo izquierdo (sostiene la bolsa) -->
+          <path d="M90 124c-14 6-24 16-28 30" fill="none" stroke="#02070F" stroke-width="15" stroke-linecap="round"/>
+          <circle cx="60" cy="156" r="8.5" fill="#02070F" stroke="#2A4A75" stroke-width="2"/>
+          <!-- torso -->
+          <rect x="82" y="108" width="76" height="62" rx="24" fill="#02070F" stroke="#2A4A75" stroke-width="2"/>
+          <!-- bufanda -->
+          <path d="M92 112c18 12 38 12 56 0" fill="none" stroke="#E4485F" stroke-width="11" stroke-linecap="round"/>
+          <path class="th__tail" d="M142 116c8 10 8 22 2 34" fill="none" stroke="#E4485F" stroke-width="9" stroke-linecap="round"/>
+          <!-- cabeza -->
+          <g class="th__head">
+            <circle cx="120" cy="86" r="34" fill="#02070F" stroke="#2A4A75" stroke-width="2"/>
+            <ellipse cx="120" cy="90" rx="25" ry="23" fill="#F2D3B3"/>
+            <path d="M86 78c0-20 14-30 34-30s34 10 34 30z" fill="#02070F" stroke="#2A4A75" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="85" y="66" width="70" height="9" rx="4" fill="#E4485F"/>
+            <circle cx="120" cy="45" r="5" fill="#E4485F"/>
+            <!-- ojos -->
+            <ellipse cx="109" cy="86" rx="6.5" ry="7" fill="#fff"/><ellipse cx="131" cy="86" rx="6.5" ry="7" fill="#fff"/>
+            <g class="th__pup"><circle cx="109" cy="87" r="3" fill="#02070F"/><circle cx="131" cy="87" r="3" fill="#02070F"/></g>
+            <path class="th__brow th__brow--l" d="M100 77h17" stroke="#02070F" stroke-width="3.6" stroke-linecap="round"/>
+            <path class="th__brow th__brow--r" d="M123 77h17" stroke="#02070F" stroke-width="3.6" stroke-linecap="round"/>
+            <!-- boca -->
+            <path class="th__m th__m--w" d="M110 107c3-3 6 3 10 0s7 3 10 0" fill="none" stroke="#7A3B2E" stroke-width="3" stroke-linecap="round"/>
+            <path class="th__m th__m--s" d="M110 109c4-6 16-6 20 0" fill="none" stroke="#7A3B2E" stroke-width="3" stroke-linecap="round"/>
+            <path class="th__m th__m--g" d="M110 105c8 6 17 3 22-5" fill="none" stroke="#7A3B2E" stroke-width="3" stroke-linecap="round"/>
+            <!-- sudor y lágrimas -->
+            <path class="th__sweat" d="M150 72c-4 6-4 10 0 10s4-4 0-10z" fill="#83BFC8"/>
+            <path class="th__sweat th__sweat--2" d="M92 64c-4 6-4 10 0 10s4-4 0-10z" fill="#83BFC8"/>
+            <path class="th__tear th__tear--l" d="M105 94c-3 6-3 10 0 10s3-4 0-10z" fill="#83BFC8"/>
+            <path class="th__tear th__tear--r" d="M135 94c-3 6-3 10 0 10s3-4 0-10z" fill="#83BFC8"/>
+          </g>
+          <!-- brazo derecho (sostiene el celular robado) -->
+          <g class="th__arm"><path d="M150 124c18 2 30 8 34 20" fill="none" stroke="#02070F" stroke-width="15" stroke-linecap="round"/>
+            <g class="th__phone"><rect x="173" y="96" width="30" height="50" rx="7" fill="#0B1220" stroke="#DAEAFF" stroke-width="2"/><rect x="177" y="101" width="22" height="40" rx="4" fill="#DAEAFF"/>
+              <path d="M188 110l8 3v7c0 6-4 10-8 12-4-2-8-6-8-12v-7z" fill="#022E5B"/><path class="th__chk" d="M184 121l3 3 6-7" fill="none" stroke="#7BE3A0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle class="th__ring" cx="188" cy="121" r="17" fill="none" stroke="#2EB85C" stroke-width="2.4"/></g>
+            <circle cx="186" cy="146" r="8.5" fill="#02070F" stroke="#2A4A75" stroke-width="2"/></g>
+        </g>
+      </svg>
+    </div>
+    <div class="pay__txt">
+      <p class="eyebrow" id="pay-e">Plan Security</p>
+      <h3 id="pay-t">Tu celular, a salvo</h3>
+      <p class="pay__p" id="pay-p"></p>
+      <div class="pay__sum" id="pay-sum"></div>
+      <p class="msg" id="pay-m" role="alert" hidden></p>
+      <div class="pay__a" id="pay-a"></div>
+    </div>
+  </div>
 </div>
 
 <dialog id="dlg"><div class="dlg" id="dlg-in"></div></dialog>
@@ -1113,7 +1325,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 /* ============ CONFIGURACIÓN ============ */
 var CFG = {
   URL: "https://mhhgmpuhwnhpjmoejwtf.supabase.co",
-  KEY: "sb_publishable_g_aQSV6VkdoyO0Qt2JGfZw_SLQkrgBh"   /* clave pública: es seguro que esté en la página */
+  KEY: "sb_publishable_g_aQSV6VkdoyO0Qt2JGfZw_SLQkrgBh",   /* clave pública: es seguro que esté en la página */
+  CULQI_PK: "pk_test_KA9gBn9uGahUJDSd",                    /* llave PÚBLICA de Culqi (la secreta vive solo en Supabase) */
+  CULQI_JS: "https://js.culqi.com/checkout-js",
+  SUPPORT: "safegrabcompany@gmail.com"
 };
 /* ======================================= */
 var DEMO = /[?&]demo(=|&|$)/.test(location.search);
@@ -1221,6 +1436,19 @@ function realApi(){
         return paths.length ? sb.storage.from("recordings").remove(paths).then(ck) : null;
       }).then(function(){ return sb.from("devices").delete().eq("id", id).then(ck) });
     },
+    plan: function(){ return sb.rpc("my_plan").then(ck) },
+    catalog: function(){ return sb.from("plan_catalog").select("code,name,months,price_cents,promo_price_cents,promo_until,sort").eq("active", true).order("sort").then(ck) },
+    payments: function(){ return sb.from("payments").select("plan_code,months,amount_cents,currency,created_at,provider").order("created_at", {ascending:false}).limit(20).then(ck) },
+    charge: function(tokenId, planCode){
+      return sb.auth.getSession().then(function(r){
+        var tok = r.data && r.data.session && r.data.session.access_token;
+        if (!tok) return {status:401, data:{message:"Tu sesión venció. Vuelve a iniciar sesión."}};
+        return fetch(CFG.URL + "/functions/v1/culqi/charge", {method:"POST",
+          headers:{"Content-Type":"application/json", "Authorization":"Bearer " + tok, "apikey":CFG.KEY},
+          body:JSON.stringify({token_id:tokenId, plan_code:planCode})
+        }).then(function(res){ return res.json().catch(function(){ return null }).then(function(d){ return {status:res.status, data:d} }) });
+      });
+    },
     signedUrl: function(path, download){
       return sb.storage.from("recordings").createSignedUrl(path, 3600, download ? {download:true} : undefined).then(ck).then(function(d){ return d.signedUrl });
     },
@@ -1267,6 +1495,9 @@ function demoApi(){
   ];
   var contacts = [{id:"c1", user_id:uid, name:"Mamá", phone:"+51 987 654 321", relation:"Familiar", created_at:iso(now - 9*864e5)}];
   var cmds = [];
+  var myPlan = {active:false, expires_at:null}, pays = [];
+  var CAT = [{code:"security_month", name:"Security", months:1, price_cents:990, promo_price_cents:790, promo_until:iso(now + 90*864e5), sort:1},
+             {code:"security_year", name:"Security Anual", months:12, price_cents:7990, promo_price_cents:5990, promo_until:iso(now + 90*864e5), sort:2}];
   function pending(v){ return new Promise(function(r){ setTimeout(function(){ r(v) }, 180) }) }
   var live = setInterval(function(){
     var d = devices[0], p = locs[locs.length - 1];
@@ -1295,12 +1526,29 @@ function demoApi(){
     recordings: function(id){ return pending(recs.filter(function(r){ return r.device_id === id })) },
     commands: function(id){ return pending(cmds.filter(function(c){ return c.device_id === id })) },
     contacts: function(){ return pending(contacts.slice()) },
-    addContact: function(c){ var r = Object.assign({id:"c" + (++n), user_id:uid, created_at:iso(Date.now())}, c); contacts.push(r); return pending(r) },
+    addContact: function(c){ if (!myPlan.active && contacts.length >= 2) return Promise.reject({message:"PLAN_LIMIT_CONTACTS: demo"}); var r = Object.assign({id:"c" + (++n), user_id:uid, created_at:iso(Date.now())}, c); contacts.push(r); return pending(r) },
     delContact: function(id){ contacts = contacts.filter(function(c){ return c.id !== id }); return pending() },
     updateAlert: function(id, patch){ var a = alerts.filter(function(x){ return x.id === id })[0]; Object.assign(a, patch); var c = Object.assign({}, a); emit("alerts", "UPDATE", c); return pending(c) },
-    sendCommand: function(devId, command, payload){ var c = {id:"m" + (++n), device_id:devId, user_id:uid, command:command, payload:payload || {}, status:"pending", created_at:iso(Date.now()), executed_at:null}; cmds.unshift(c); emit("device_commands", "INSERT", Object.assign({}, c)); return pending(c) },
+    sendCommand: function(devId, command, payload){ if (!myPlan.active) return Promise.reject({message:"new row violates row-level security policy"}); var c = {id:"m" + (++n), device_id:devId, user_id:uid, command:command, payload:payload || {}, status:"pending", created_at:iso(Date.now()), executed_at:null}; cmds.unshift(c); emit("device_commands", "INSERT", Object.assign({}, c)); return pending(c) },
     renameDevice: function(id, name){ devices.forEach(function(d){ if (d.id === id) d.name = name }); return pending() },
     deleteDevice: function(id){ devices = devices.filter(function(d){ return d.id !== id }); return pending() },
+    plan: function(){
+      var a = myPlan.active;
+      return pending({plan:a ? "security" : "free", active:a, expires_at:a ? myPlan.expires_at : null, extra_devices:0,
+        devices_limit:a ? 3 : 1, devices_used:devices.length, contacts_limit:a ? 10 : 2, contacts_used:contacts.length});
+    },
+    catalog: function(){ return pending(CAT.map(function(c){ return Object.assign({}, c) })) },
+    payments: function(){ return pending(pays.slice()) },
+    charge: function(tok, code){
+      var c = CAT.filter(function(x){ return x.code === code })[0];
+      return new Promise(function(res){ setTimeout(function(){
+        var base = myPlan.active ? new Date(myPlan.expires_at) : new Date(), e = new Date(base.getTime());
+        var day = e.getDate(); e.setDate(1); e.setMonth(e.getMonth() + c.months); e.setDate(Math.min(day, new Date(e.getFullYear(), e.getMonth() + 1, 0).getDate()));
+        myPlan = {active:true, expires_at:e.toISOString()};
+        pays.unshift({plan_code:code, months:c.months, amount_cents:c.promo_price_cents, currency:"PEN", created_at:iso(Date.now()), provider:"demo"});
+        res({status:200, data:{ok:true, paid:true, active:true, expires_at:myPlan.expires_at, plan_code:code}});
+      }, 2600) });
+    },
     signedUrl: function(){ return Promise.reject(new Error("demo")) },
     deleteRecording: function(rec){ recs = recs.filter(function(r){ return r.id !== rec.id }); return pending() },
     subscribe: function(u, on){ handlers.push(on); return function(){ handlers = handlers.filter(function(f){ return f !== on }) } }
@@ -1310,7 +1558,7 @@ function demoApi(){
 /* =====================================================================
    ESTADO
    ===================================================================== */
-var api, S = {user:null, devices:[], devId:null, locs:[], alerts:[], recs:[], cmds:[], contacts:[], range:"24h", tab:"resumen"};
+var api, S = {user:null, devices:[], devId:null, locs:[], alerts:[], recs:[], cmds:[], contacts:[], range:"24h", tab:"resumen", plan:null, catalog:[], pays:[]};
 var unsub = null, started = false;
 function dev(){ return S.devices.filter(function(d){ return d.id === S.devId })[0] || null }
 function activeAlert(){ return S.alerts.filter(function(a){ return a.status === "active" || a.status === "countdown" })[0] || null }
@@ -1360,13 +1608,13 @@ $("#b-demo").addEventListener("click", function(){ location.href = "panel.html?d
 /* =====================================================================
    NAVEGACIÓN
    ===================================================================== */
-var NAV = [["resumen", "Resumen", "map"], ["alertas", "Alertas", "bell"], ["grabaciones", "Grabaciones", "vid"], ["contactos", "Contactos", "users"], ["acciones", "Acciones", "bolt"], ["telefonos", "Teléfonos", "phone"]];
+var NAV = [["resumen", "Resumen", "map"], ["alertas", "Alertas", "bell"], ["grabaciones", "Grabaciones", "vid", "Videos"], ["contactos", "Contactos", "users"], ["acciones", "Acciones", "bolt"], ["telefonos", "Teléfonos", "phone"], ["plan", "Plan", "star"]];
 function renderNav(){
   var a = activeAlert() ? 1 : 0;
   [["#nav-side", false], ["#nav-bot", true]].forEach(function(p){
     var box = $(p[0]); clear(box);
     NAV.forEach(function(n, i){
-      var link = h("a", {href:"#" + n[0], "aria-current":S.tab === n[0] ? "page" : null}, p[1] ? icon(n[2]) : h("span", {class:"n", text:"0" + (i + 1)}), h("span", {text:n[1]}));
+      var link = h("a", {href:"#" + n[0], "aria-current":S.tab === n[0] ? "page" : null}, p[1] ? icon(n[2]) : h("span", {class:"n", text:"0" + (i + 1)}), h("span", {text:p[1] && n[3] ? n[3] : n[1]}));
       if (n[0] === "alertas" && a) link.appendChild(h("span", {class:"dot", text:"!", "aria-label":"Alerta activa"}));
       box.appendChild(link);
     });
@@ -1377,7 +1625,7 @@ function route(){
   if (!NAV.some(function(n){ return n[0] === t })) t = "resumen";
   S.tab = t;
   $$("[data-view]").forEach(function(v){ v.hidden = v.id !== "v-" + t });
-  renderNav();
+  renderNav(); renderPlanbar();
   if (t === "resumen"){ ensureMap(); setTimeout(function(){ if (map){ map.invalidateSize(); drawMap(true) } }, 60) }
   window.scrollTo(0, 0);
 }
@@ -1511,9 +1759,24 @@ function resolveAlert(a){
 }
 function renderRecs(){
   var box = $("#recs"); clear(box);
+  var up = $("#rec-up"); clear(up);
+  var locked = isLocked();
+  if (locked){
+    up.appendChild(h("div", {class:"lockbox"}, icon("lock"),
+      h("div", {class:"lockbox__t"}, h("b", {text:"Las grabaciones están bloqueadas"}),
+        h("span", {text:S.recs.length ? "Tu teléfono ya subió " + S.recs.length + (S.recs.length === 1 ? " grabación" : " grabaciones") + " y se quedan guardadas. Con Security las ves, las reproduces y las descargas desde aquí." : "Tu teléfono sube el video y el audio durante una emergencia. Con Security los ves y los descargas desde aquí."})),
+      h("a", {class:"btn btn--p", href:"#plan", text:"Ver planes"})));
+  }
   if (!S.recs.length){ box.appendChild(h("div", {class:"empty"}, icon("vid"), h("b", {text:"Sin grabaciones"}), h("span", {text:"Aquí aparecerán el video y el audio que el teléfono suba durante una emergencia."}))); return }
   var g = h("div", {class:"polas"}); box.appendChild(g);
   S.recs.forEach(function(r){
+    if (locked){
+      g.appendChild(h("div", {class:"rec rec--lock"},
+        h("div", {class:"rec__ph"}, h("span", {class:"tag rec__k", text:r.kind === "audio" ? "Audio" : "Video"}), icon("lock")),
+        h("div", {class:"rec__cap"}, h("b", {text:when(r.created_at)}), h("small", {text:"Bloqueada · plan Security"})),
+        h("div", {class:"row__a"}, h("a", {class:"btn btn--sm btn--p", href:"#plan"}, icon("lock"), "Desbloquear"))));
+      return;
+    }
     g.appendChild(h("div", {class:"rec"},
       h("div", {class:"rec__ph"}, h("span", {class:"tag rec__k", text:r.kind === "audio" ? "Audio" : "Video"}), icon(r.kind === "audio" ? "aud" : "vid")),
       h("div", {class:"rec__cap"}, h("b", {text:when(r.created_at)}), h("small", {text:[dur(r.duration_s), size(r.size_bytes)].filter(Boolean).join(" · ")})),
@@ -1550,7 +1813,7 @@ function renderContacts(){
       h("div", {class:"row__t"}, h("b", {text:c.name}), h("small", {text:c.phone + (c.relation ? " · " + c.relation : "")})),
       h("button", {class:"btn btn--sm btn--danger", type:"button", onclick:function(){
         ask("¿Quitar a " + c.name + "?", "Dejará de recibir avisos de SafeGrab.", "Quitar", true).then(function(ok){
-          if (ok) api.delContact(c.id).then(function(){ S.contacts = S.contacts.filter(function(x){ return x.id !== c.id }); renderContacts() }).catch(function(){ say("No se pudo quitar el contacto.", true) });
+          if (ok) api.delContact(c.id).then(function(){ S.contacts = S.contacts.filter(function(x){ return x.id !== c.id }); renderContacts(); renderCounters() }).catch(function(){ say("No se pudo quitar el contacto.", true) });
         });
       }}, icon("trash"), "Quitar")));
   });
@@ -1562,7 +1825,11 @@ $("#f-contact").addEventListener("submit", function(e){
   if (!name) { m.textContent = "Escribe un nombre."; m.hidden = false; return }
   if (!/^\+?[0-9 ()-]+$/.test(phone) || digits.length < 7 || digits.length > 15){ m.textContent = "Escribe un número de celular válido."; m.hidden = false; return }
   m.hidden = true;
-  api.addContact({name:name, phone:phone, relation:rel || null}).then(function(c){ S.contacts.push(c); renderContacts(); e.target.reset(); say("Contacto guardado.") }).catch(function(){ m.textContent = "No se pudo guardar. Inténtalo de nuevo."; m.hidden = false });
+  if (S.plan && S.contacts.length >= S.plan.contacts_limit) return planMsg(m, "PLAN_LIMIT_CONTACTS");
+  api.addContact({name:name, phone:phone, relation:rel || null}).then(function(c){ S.contacts.push(c); renderContacts(); renderCounters(); e.target.reset(); say("Contacto guardado.") }).catch(function(err){
+    if (planErr(err)) return planMsg(m, planErr(err));
+    m.textContent = "No se pudo guardar. Inténtalo de nuevo."; m.hidden = false;
+  });
 });
 var CMD = {ring:"Sirena", locate:"Ubicar ahora", lock:"Bloquear pantalla"}, CST = {pending:["Pendiente", "warn"], received:["En el teléfono", "warn"], done:["Ejecutada", "ok"], failed:["Falló", "bad"]};
 function cmdState(c){
@@ -1581,12 +1848,16 @@ function renderCmds(){
 }
 $$("[data-cmd]").forEach(function(b){
   b.addEventListener("click", function(){
+    if (isLocked()) return say("Las acciones remotas son parte del plan Security.", true);
     var d = dev(); if (!d) return say("Primero vincula un teléfono.", true);
     var c = b.getAttribute("data-cmd"), payload = {};
     if (c === "lock"){ var t = $("#lock-msg").value.trim(); if (t) payload.message = t }
     ask("¿Enviar la orden “" + CMD[c] + "”?", "Se enviará a " + d.name + ".", "Enviar").then(function(ok){
       if (!ok) return;
-      api.sendCommand(d.id, c, payload).then(function(r){ upsert(S.cmds, r); renderCmds(); say("Orden enviada.") }).catch(function(){ say("No se pudo enviar la orden.", true) });
+      api.sendCommand(d.id, c, payload).then(function(r){ upsert(S.cmds, r); renderCmds(); say("Orden enviada.") }).catch(function(err){
+        if (/row-level security|PLAN_/i.test((err && err.message) || "")) { say("Las acciones remotas son parte del plan Security.", true); loadPlan().then(renderPlanBits); return }
+        say("No se pudo enviar la orden.", true);
+      });
     });
   });
 });
@@ -1602,7 +1873,9 @@ function renderDevs(){
       h("button", {class:"btn btn--sm btn--danger", type:"button", onclick:function(){
         ask("¿Eliminar “" + d.name + "”?", "Se borran también su historial de ubicación, sus alertas y sus grabaciones. No se puede deshacer.", "Eliminar todo", true).then(function(ok){
           if (!ok) return;
-          api.deleteDevice(d.id).then(function(){ S.devices = S.devices.filter(function(x){ return x.id !== d.id }); if (S.devId === d.id){ S.devId = S.devices[0] ? S.devices[0].id : null; return loadDevice() } }).then(function(){ renderAll(); say("Teléfono eliminado.") }).catch(function(){ say("No se pudo eliminar el teléfono.", true) });
+          api.deleteDevice(d.id).then(function(){ S.devices = S.devices.filter(function(x){ return x.id !== d.id }); if (S.devId === d.id){ S.devId = S.devices[0] ? S.devices[0].id : null; return loadDevice() } }).then(function(){ renderAll(); say("Teléfono eliminado.") }).catch(function(){
+            say(isLocked() ? "Este teléfono tiene grabaciones guardadas. Para borrarlas escríbenos a " + CFG.SUPPORT + " o activa Security." : "No se pudo eliminar el teléfono.", true);
+          });
         });
       }}, icon("trash"), "Eliminar")));
   });
@@ -1614,7 +1887,7 @@ function renderDevSel(){
   s.disabled = S.devices.length < 2;
 }
 $("#devsel").addEventListener("change", function(e){ S.devId = e.target.value; loadDevice().then(function(){ renderAll(); drawMap(true) }) });
-function renderAll(){ renderDevSel(); renderChip(); renderBanner(); renderNav(); renderStats(); renderReports(); renderAlerts(); renderRecs(); renderCmds(); renderContacts(); renderDevs(); drawMap(false) }
+function renderAll(){ renderDevSel(); renderChip(); renderBanner(); renderNav(); renderStats(); renderReports(); renderAlerts(); renderRecs(); renderCmds(); renderContacts(); renderDevs(); renderPlanBits(); drawMap(false) }
 
 /* =====================================================================
    CARGA Y TIEMPO REAL
@@ -1653,7 +1926,7 @@ function start(user){
   $("#who").textContent = user.email || ""; $("#demo-bar").hidden = !api.demo;
   $("#out-m").style.display = "";
   window.addEventListener("resize", function(){ var o = $("#out-m"); o.style.display = "" });
-  Promise.all([api.devices(), api.contacts()]).then(function(r){
+  Promise.all([api.devices(), api.contacts(), loadPlan()]).then(function(r){
     S.devices = r[0]; S.contacts = r[1]; S.devId = S.devices[0] ? S.devices[0].id : null;
     return loadDevice();
   }).then(function(){
@@ -1668,13 +1941,278 @@ function out(){
 $$("[data-out]").forEach(function(b){ b.addEventListener("click", out) });
 $("#al-ok").addEventListener("click", function(){ var a = activeAlert(); if (a) resolveAlert(a) });
 $("#b-sim").addEventListener("click", function(){ if (api.simulateAlert) api.simulateAlert() });
-setInterval(function(){ if (started){ renderChip(); renderStats() } }, 30000);
+var lastLocked = null;
+setInterval(function(){
+  if (!started) return;
+  renderChip(); renderStats();
+  var l = isLocked();
+  if (lastLocked !== null && l !== lastLocked){ renderRecs(); renderPlanBits() } else renderPlanbar();
+  lastLocked = l;
+}, 30000);
 function tick(){
   var c = $("#clock"); if (!c) return;
   var tz = ""; try{ tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || "").split("/").pop().replace(/_/g, " ") }catch(e){}
   c.textContent = ""; c.appendChild(document.createTextNode((tz ? tz + " · " : ""))); c.appendChild(h("b", {text:new Date().toLocaleTimeString("es-PE", {hour12:false})}));
 }
 tick(); setInterval(tick, 1000);
+
+/* =====================================================================
+   PLAN Y PAGO
+   ===================================================================== */
+var FALLBACK_CAT = [
+  {code:"security_month", name:"Security", months:1, price_cents:990, promo_price_cents:790, promo_until:"2027-01-31T23:59:59-05:00", sort:1},
+  {code:"security_year", name:"Security Anual", months:12, price_cents:7990, promo_price_cents:5990, promo_until:"2027-01-31T23:59:59-05:00", sort:2}
+];
+function isPrem(){ var p = S.plan; return !!(p && p.active && p.expires_at && new Date(p.expires_at).getTime() > Date.now()) }
+/* Solo se bloquea cuando SÍ sabemos que la cuenta es Básica; si no se pudo leer el plan, no se bloquea nada
+   en pantalla (la base de datos hace cumplir las reglas de todos modos). */
+function isLocked(){ return !!S.plan && !isPrem() }
+function cat(){ return S.catalog && S.catalog.length ? S.catalog : FALLBACK_CAT }
+function catItem(code){ return cat().filter(function(c){ return c.code === code })[0] || null }
+function promoOn(c){ return c.promo_price_cents != null && (!c.promo_until || new Date(c.promo_until).getTime() > Date.now()) }
+function priceOf(c){ return promoOn(c) ? c.promo_price_cents : c.price_cents }
+function soles(cents){ return "S/ " + (cents/100).toFixed(2) }
+function longDay(iso){ return new Date(iso).toLocaleDateString("es-PE", {dateStyle:"long"}) }
+function addMonths(d, n){
+  var x = new Date(d.getTime()), day = x.getDate();
+  x.setDate(1); x.setMonth(x.getMonth() + n);
+  x.setDate(Math.min(day, new Date(x.getFullYear(), x.getMonth() + 1, 0).getDate()));
+  return x;
+}
+function periodTxt(m){ return m === 1 ? "1 mes" : m + " meses" }
+
+function loadPlan(){
+  return Promise.all([
+    api.plan().catch(function(){ return null }),
+    api.catalog().catch(function(){ return [] }),
+    api.payments().catch(function(){ return [] })
+  ]).then(function(r){ S.plan = r[0] || null; S.catalog = r[1] || []; S.pays = r[2] || []; lastLocked = isLocked(); return S.plan });
+}
+function planErr(e){
+  var m = (e && e.message) || "";
+  var k = /PLAN_LIMIT_(CONTACTS|DEVICES)/.exec(m);
+  return k ? "PLAN_LIMIT_" + k[1] : null;
+}
+function planMsg(box, code){
+  var txt = code === "PLAN_LIMIT_DEVICES"
+    ? "Tu plan permite " + (S.plan ? S.plan.devices_limit : 1) + " teléfono(s). Con Security puedes vincular hasta 3."
+    : "Tu plan permite " + (S.plan ? S.plan.contacts_limit : 2) + " contactos de confianza. Con Security puedes tener hasta 10.";
+  clear(box); add(box, [txt + " ", h("a", {href:"#plan", text:"Ver planes"})]); box.hidden = false;
+}
+function renderCounters(){
+  var pairs = [["#c-count", S.contacts.length, S.plan && S.plan.contacts_limit], ["#d-count", S.devices.length, S.plan && S.plan.devices_limit]];
+  pairs.forEach(function(p){
+    var b = $(p[0]); if (!b) return;
+    if (p[2] == null){ b.hidden = true; return }
+    b.hidden = false; b.textContent = p[1] + " de " + p[2];
+    b.className = "badge" + (p[1] >= p[2] ? " badge--warn" : "");
+  });
+}
+function renderCmdLock(){
+  var l = isLocked(), up = $("#acc-up"); clear(up);
+  $(".cmds").classList.toggle("is-locked", l);
+  $$("[data-cmd]").forEach(function(b){ b.disabled = l });
+  $("#lock-msg").disabled = l;
+  if (l) up.appendChild(h("div", {class:"lockbox"}, icon("lock"),
+    h("div", {class:"lockbox__t"}, h("b", {text:"Las acciones remotas son parte de Security"}),
+      h("span", {text:"Con Security puedes hacer sonar la sirena, pedir la ubicación al instante y bloquear la pantalla de tu teléfono desde aquí."})),
+    h("a", {class:"btn btn--p", href:"#plan", text:"Ver planes"})));
+}
+function renderPlanbar(){
+  var b = $("#planbar"), t = $("#pb-t"); if (!b) return;
+  var show = false;
+  if (S.plan && S.tab !== "plan"){
+    if (isPrem()){
+      var days = Math.ceil((new Date(S.plan.expires_at).getTime() - Date.now())/864e5);
+      if (days <= 7){ show = true; t.textContent = "Tu plan Security vence " + (days <= 1 ? "hoy o mañana" : "en " + days + " días") + " (" + longDay(S.plan.expires_at) + ")." }
+    } else if (S.pays.length){
+      show = true; t.textContent = "Tu plan Security venció. Las grabaciones y las acciones remotas están bloqueadas.";
+    }
+  }
+  b.hidden = !show;
+}
+function renderPlanBits(){ renderPlan(); renderPlanbar(); renderCounters(); renderCmdLock() }
+
+var FEATS_FREE = [[1, "Alertas y ubicación en el mapa"], [1, "1 teléfono"], [1, "2 contactos de confianza"], [0, "Ver y descargar grabaciones"], [0, "Sirena, ubicar y bloquear a distancia"]];
+var FEATS_SEC = [[1, "Todo lo del plan Básico"], [1, "Ver, reproducir y descargar el video y el audio"], [1, "Sirena, ubicar y bloquear a distancia"], [1, "Hasta 3 teléfonos"], [1, "Hasta 10 contactos de confianza"]];
+function feats(list){ return h("ul", {class:"plan__ul"}, list.map(function(f){ return h("li", {class:f[0] ? "" : "no"}, icon(f[0] ? "check" : "lock"), h("span", {text:f[1]})) })) }
+
+function renderPlan(){
+  var st = $("#plan-st"), box = $("#plans"); if (!st) return;
+  clear(st); clear(box);
+  $("#plan-test").hidden = api.demo || CFG.CULQI_PK.indexOf("pk_test") !== 0;
+  var prem = isPrem(), p = S.plan;
+  if (!p){
+    st.appendChild(h("div", {class:"planstat__m"}, h("small", {text:"Plan"}), h("b", {text:"No se pudo leer"}), h("span", {text:"Revisa tu conexión e inténtalo de nuevo."})));
+    st.appendChild(h("button", {class:"btn btn--sm", type:"button", text:"Reintentar", onclick:function(){ loadPlan().then(function(){ renderPlanBits(); renderRecs() }) }}));
+  } else {
+    st.appendChild(h("div", {class:"planstat__m"}, h("small", {text:"Plan actual"}), h("b", {class:prem ? "ok" : "", text:prem ? "Security" : "Básico"}), h("span", {text:prem ? "Activo" : "Gratis"})));
+    if (prem){
+      var dl = Math.ceil((new Date(p.expires_at).getTime() - Date.now())/864e5);
+      st.appendChild(h("div", {class:"planstat__m"}, h("small", {text:"Vence"}), h("b", {text:longDay(p.expires_at)}), h("span", {text:dl <= 1 ? "Termina pronto" : "Te quedan " + dl + " días"})));
+    }
+    st.appendChild(h("div", {class:"planstat__m"}, h("small", {text:"Teléfonos"}), h("b", {text:S.devices.length + " de " + p.devices_limit}), h("span", {text:"vinculados"})));
+    st.appendChild(h("div", {class:"planstat__m"}, h("small", {text:"Contactos"}), h("b", {text:S.contacts.length + " de " + p.contacts_limit}), h("span", {text:"de confianza"})));
+  }
+  /* Básico */
+  box.appendChild(h("article", {class:"plan" + (p && !prem ? " plan--cur" : "")},
+    p && !prem ? h("span", {class:"plan__tag plan__tag--cur", text:"Tu plan"}) : null,
+    h("h4", {text:"Básico"}),
+    h("div", {class:"plan__price"}, h("span", {class:"plan__now", text:"S/ 0"}), h("span", {class:"plan__per", text:"Gratis, sin vencimiento"})),
+    feats(FEATS_FREE),
+    h("button", {class:"btn", type:"button", disabled:true, text:p && !prem ? "Tu plan actual" : "Al vencer Security vuelves aquí"})));
+  /* Security (mensual y anual) */
+  var month = catItem("security_month"), year = catItem("security_year");
+  cat().forEach(function(c){
+    var on = promoOn(c), pr = priceOf(c), off = on ? Math.round((1 - c.promo_price_cents/c.price_cents)*100) : 0;
+    var yearly = c.months > 1, extra = null;
+    if (yearly) extra = "≈ " + soles(Math.round(pr/c.months)) + " al mes";
+    else extra = "por mes";
+    var saveYear = (yearly && month) ? Math.round((1 - pr/(priceOf(month)*c.months))*100) : 0;
+    box.appendChild(h("article", {class:"plan" + (yearly ? " plan--hot" : "")},
+      yearly && saveYear > 0 ? h("span", {class:"plan__tag", text:"Ahorras " + saveYear + "%"}) : null,
+      h("h4", {text:c.name}),
+      h("div", {class:"plan__price"},
+        h("span", {class:"plan__now", text:soles(pr)}),
+        on ? h("span", {class:"plan__old", text:soles(c.price_cents)}) : null,
+        on ? h("span", {class:"plan__off", text:"Beta −" + off + "%"}) : null,
+        h("span", {class:"plan__per", text:extra + " · pago único por " + periodTxt(c.months)})),
+      on && c.promo_until ? h("p", {class:"plan__per", text:"Precio de lanzamiento hasta el " + longDay(c.promo_until) + "."}) : null,
+      feats(FEATS_SEC),
+      h("button", {class:"btn btn--p", type:"button", onclick:function(){ openPay(c.code) }}, icon("lock"), prem ? "Extender con este plan" : "Elegir " + c.name)));
+  });
+  $("#plans-fine").textContent = "Es un pago único por el periodo que eliges: no se renueva solo y no hacemos cobros automáticos. Pagas con tarjeta o Yape a través de Culqi; SafeGrab no ve ni guarda los datos de tu tarjeta. Si compras con Security activo, el tiempo se suma al que ya tienes. Los precios incluyen los impuestos que correspondan.";
+  /* pagos */
+  var pb = $("#pays"); clear(pb);
+  if (!S.pays.length) pb.appendChild(h("div", {class:"empty"}, h("span", {text:"Aún no tienes pagos."})));
+  S.pays.forEach(function(x){
+    var c = catItem(x.plan_code);
+    pb.appendChild(h("div", {class:"row"}, h("span", {class:"badge badge--ok", text:"Pagado"}),
+      h("div", {class:"row__t"}, h("b", {text:(c ? c.name : "Security") + " · " + periodTxt(x.months)}), h("small", {text:when(x.created_at)})),
+      h("b", {text:soles(x.amount_cents)})));
+  });
+}
+
+/* ---------- Pantalla de pago (con el ladrón) ---------- */
+var PAY = {code:null, busy:false, open:false, back:null, poll:null};
+var TH = {wait:"Un ladrón de caricatura, con cara de preocupado.", proc:"El ladrón sudando de nervios.", ok:"El ladrón llorando: se le cayó la bolsa y el celular quedó protegido.", err:"El ladrón sonriendo con malicia."};
+function thState(s){ var t = $("#th"); t.setAttribute("data-s", s); t.setAttribute("aria-label", TH[s]) }
+function payBtn(label, cls, fn, href){
+  return href ? h("a", {class:"btn " + cls, href:href, onclick:fn, text:label}) : h("button", {class:"btn " + cls, type:"button", onclick:fn, text:label});
+}
+function payView(o){
+  thState(o.th); $("#pay-e").textContent = o.eyebrow; $("#pay-t").textContent = o.title; $("#pay-p").textContent = o.p || "";
+  var sum = $("#pay-sum"); clear(sum);
+  (o.sum || []).forEach(function(r){ sum.appendChild(h("div", null, h("span", {text:r[0]}), h("b", {text:r[1]}))) });
+  var m = $("#pay-m"); m.hidden = !o.msg; m.textContent = o.msg || ""; m.className = "msg" + (o.ok ? " msg--ok" : "");
+  var a = $("#pay-a"); clear(a); add(a, o.actions || []);
+  var f = $("button, a", a); if (f) try{ f.focus({preventScroll:true}) }catch(e){}
+}
+function openPay(code){
+  var c = catItem(code); if (!c) return;
+  PAY.code = code; PAY.busy = false;
+  if (!PAY.open){
+    PAY.open = true; PAY.back = document.activeElement;
+    $("#pay").hidden = false; document.documentElement.style.overflow = "hidden";
+  }
+  payWait();
+}
+function closePay(force){
+  if (PAY.busy && !force) return;
+  clearTimeout(PAY.poll);
+  PAY.open = false; PAY.busy = false; $("#pay").hidden = true; document.documentElement.style.overflow = "";
+  if (PAY.back && PAY.back.focus) try{ PAY.back.focus() }catch(e){}
+}
+document.addEventListener("keydown", function(e){ if (e.key === "Escape" && PAY.open) closePay() });
+function payWait(){
+  var c = catItem(PAY.code), pr = priceOf(c);
+  var base = isPrem() ? new Date(S.plan.expires_at) : new Date();
+  payView({th:"wait", eyebrow:"Plan " + c.name,
+    title:"¿Listo para dejarlo sin trabajo?",
+    p:"Con Security ves y descargas lo que grabó tu teléfono y lo controlas a distancia. Pago único: no se renueva solo.",
+    sum:[["Plan", c.name], ["Periodo", periodTxt(c.months)], [isPrem() ? "Tu acceso se extiende hasta" : "Acceso hasta", longDay(addMonths(base, c.months))], ["Total", soles(pr)]],
+    msg:api.demo ? "Demostración: no se cobra nada." : null, ok:true,
+    actions:[payBtn(api.demo ? "Simular el pago" : "Pagar " + soles(pr), "btn--p", function(){ startPay() }), payBtn("Ahora no", "", function(){ closePay() })]});
+}
+function loadCulqi(){
+  return new Promise(function(res, rej){
+    if (window.CulqiCheckout) return res();
+    var s = document.createElement("script"); s.src = CFG.CULQI_JS; s.async = true;
+    s.onload = function(){ window.CulqiCheckout ? res() : rej(new Error("culqi")) };
+    s.onerror = function(){ rej(new Error("culqi")) };
+    document.head.appendChild(s);
+  });
+}
+function startPay(){
+  if (PAY.busy) return;
+  var c = catItem(PAY.code);
+  if (api.demo) return onToken("demo");
+  var btn = $(".btn--p", $("#pay-a")); if (btn){ btn.disabled = true; btn.textContent = "Abriendo el pago…" }
+  loadCulqi().then(function(){
+    var cu = new window.CulqiCheckout(CFG.CULQI_PK, {
+      settings:{title:"SafeGrab · " + c.name, currency:"PEN", amount:priceOf(c)},
+      client:{email:S.user.email || ""},
+      options:{lang:"es", installments:false, modal:true, paymentMethods:{tarjeta:true, yape:true}}
+    });
+    var handler = function(){
+      if (cu.token && cu.token.id){ var id = cu.token.id; try{ cu.close() }catch(e){} onToken(id) }
+      else if (cu.error){ try{ cu.close() }catch(e){} payFail((cu.error && cu.error.user_message) || "No pudimos validar los datos del pago. Revísalos e inténtalo otra vez.") }
+    };
+    cu.culqi = handler; window.culqi = handler;
+    cu.open();
+    if (btn){ btn.disabled = false; btn.textContent = "Pagar " + soles(priceOf(c)) }
+  }).catch(function(){
+    if (btn){ btn.disabled = false; btn.textContent = "Pagar " + soles(priceOf(c)) }
+    payView({th:"err", eyebrow:"Sin conexión con el pago", title:"No se pudo abrir el pago", p:"No se cargó la ventana de pago de Culqi. Revisa tu conexión (o si un bloqueador de anuncios la está frenando) e inténtalo otra vez.",
+      actions:[payBtn("Intentar otra vez", "btn--p", payWait), payBtn("Cerrar", "", function(){ closePay() })]});
+  });
+}
+function onToken(tokenId){
+  PAY.busy = true;
+  payView({th:"proc", eyebrow:"Un momento", title:"Procesando tu pago…", p:"No cierres esta ventana. Estamos confirmando el pago.", actions:[h("span", {class:"pay__busy", role:"status", "aria-label":"Procesando"})]});
+  api.charge(tokenId, PAY.code).then(function(r){
+    var d = r.data || {};
+    if (r.status === 200 && d.ok){
+      if (d.active) return payDone(d.expires_at);
+      return payPending();
+    }
+    payFail(d.message || "No se pudo procesar el pago.");
+  }).catch(function(){
+    PAY.busy = false;
+    payView({th:"wait", eyebrow:"Revisa tu plan", title:"No pudimos confirmar el pago", p:"Se cortó la conexión antes de recibir la respuesta. Si te cobraron, tu plan se activa solo en unos minutos; no pagues dos veces.",
+      actions:[payBtn("Revisar mi plan", "btn--p", function(){ payPending(true) }), payBtn("Cerrar", "", function(){ closePay() })]});
+  });
+}
+function payDone(expires){
+  PAY.busy = false;
+  loadPlan().then(function(){ renderPlanBits(); renderRecs() });
+  var exp = expires || (S.plan && S.plan.expires_at);
+  payView({th:"ok", eyebrow:"Pago confirmado", title:"Un ladrón menos tranquilo",
+    p:"Tu plan Security está activo" + (exp ? " hasta el " + longDay(exp) : "") + ". Ya puedes ver tus grabaciones y controlar tu teléfono a distancia.",
+    actions:[payBtn("Ver grabaciones", "btn--p", function(){ closePay(); }, "#grabaciones"), payBtn("Cerrar", "", function(){ closePay() })]});
+}
+function payPending(manual){
+  PAY.busy = true; var tries = 0;
+  payView({th:"proc", eyebrow:"Pago recibido", title:"Activando tu plan…", p:"Esto toma unos segundos.", actions:[h("span", {class:"pay__busy", role:"status", "aria-label":"Activando"})]});
+  (function poll(){
+    api.plan().catch(function(){ return null }).then(function(p){
+      if (p && p.active) return payDone(p.expires_at);
+      if (++tries >= (manual ? 4 : 12)){
+        PAY.busy = false;
+        payView({th:"wait", eyebrow:"Pago recibido", title:"La activación se demora",
+          p:"Tu pago llegó y el plan se activará solo. Si en 10 minutos no lo ves, escríbenos a " + CFG.SUPPORT + " con el correo de tu cuenta.",
+          actions:[payBtn("Revisar otra vez", "btn--p", function(){ payPending(true) }), payBtn("Cerrar", "", function(){ closePay() })]});
+        return;
+      }
+      PAY.poll = setTimeout(poll, 3000);
+    });
+  })();
+}
+function payFail(msg){
+  PAY.busy = false;
+  payView({th:"err", eyebrow:"Pago no completado", title:"Esta vez no se pudo", p:msg || "No se pudo procesar el pago.", msg:"Tu cuenta no fue cobrada si ves este aviso. Si tienes dudas, escríbenos a " + CFG.SUPPORT + ".", ok:true,
+    actions:[payBtn("Intentar otra vez", "btn--p", payWait), payBtn("Cerrar", "", function(){ closePay() })]});
+}
 
 /* =====================================================================
    ARRANQUE

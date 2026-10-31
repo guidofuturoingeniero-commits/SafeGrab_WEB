@@ -89,10 +89,12 @@ button{font:inherit;color:inherit;cursor:pointer}
 .menu.is-open{display:block}
 .menu a{display:block;padding:16px var(--gutter);font-weight:500;text-decoration:none;border-bottom:1px solid var(--linea-osc)}
 .menu .btn{margin:18px var(--gutter);display:flex}
-@media (min-width:940px){
+@media (min-width:1240px){
   .nav,.hdr__cta{display:flex}
   .burger,.menu{display:none!important}
 }
+.nav a,.hdr__cta{white-space:nowrap}
+@media (min-width:1240px) and (max-width:1399px){.nav{gap:20px}.nav a{font-size:.9rem}}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;isolation:isolate;overflow:hidden}
@@ -508,6 +510,36 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 /* Evita desbordes horizontales por las apariciones laterales */
 main{overflow-x:clip}
 
+
+/* ===== Planes ===== */
+.pl{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,24px);margin-top:clamp(36px,5vw,56px);align-items:stretch}
+.pl__c{position:relative;display:flex;flex-direction:column;gap:14px;background:#fff;border:1.5px solid var(--linea-cla);border-radius:var(--r-lg);padding:clamp(24px,2.6vw,32px);color:var(--noche);box-shadow:0 18px 40px -28px rgba(2,46,91,.35);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.pl__c:hover{transform:translateY(-4px);box-shadow:0 26px 50px -26px rgba(2,46,91,.45)}
+.pl__c--hot{background:linear-gradient(180deg,var(--noche) 0%,var(--noche-2) 100%);color:var(--hielo);border-color:rgba(131,191,200,.5);box-shadow:0 30px 60px -26px rgba(2,22,44,.7)}
+.pl__tag{position:absolute;top:-13px;left:24px;background:var(--alerta-btn);color:#fff;font-weight:600;font-size:.78rem;letter-spacing:.03em;padding:5px 14px;border-radius:99px;box-shadow:0 8px 20px -8px rgba(228,72,95,.8)}
+.pl__n{font-family:var(--f-display);font-weight:700;font-stretch:88%;font-size:1.5rem;line-height:1}
+.pl__d{font-size:.92rem;color:rgba(4,22,44,.68);min-height:2.7em}
+.pl__c--hot .pl__d{color:rgba(218,234,255,.74)}
+.pl__p{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin-top:2px}
+.pl__p b{font-family:var(--f-display);font-weight:700;font-stretch:84%;font-size:clamp(2.3rem,1.6rem + 2vw,3.1rem);line-height:1;letter-spacing:-.02em}
+.pl__p s{font-size:1rem;opacity:.55}
+.pl__p small{flex-basis:100%;font-size:.85rem;opacity:.72}
+.pl__off{display:inline-block;margin-top:2px;font-size:.8rem;font-weight:600;color:var(--alerta);background:rgba(228,72,95,.12);border-radius:99px;padding:3px 11px}
+.pl__c--hot .pl__off{color:#FFB3BE;background:rgba(228,72,95,.2)}
+.pl__off[hidden]{display:none}
+.pl__l{list-style:none;padding:0;margin:6px 0 0;display:grid;gap:11px;font-size:.93rem;flex:1;align-content:start}
+.pl__l li{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start}
+.pl__l .ico{width:20px;height:20px;color:var(--seguro);margin-top:1px}
+.pl__l .no{opacity:.55}
+.pl__l .no .ico{color:currentColor}
+.pl__c--hot .pl__l .ico{color:var(--marina)}
+.pl__c .btn{width:100%;margin-top:8px}
+.pl__c:not(.pl__c--hot) .btn--ghost{border-color:rgba(2,46,91,.35);color:var(--noche)}
+.pl__c:not(.pl__c--hot) .btn--ghost:hover{border-color:var(--noche);background:rgba(2,46,91,.06)}
+.pl__note{margin-top:30px;display:grid;gap:8px;justify-items:center;text-align:center;color:var(--fg-soft);font-size:.93rem}
+.pl__note b{color:var(--noche)}
+@media (max-width:900px){.pl{grid-template-columns:1fr;max-width:520px;margin-inline:auto}.pl__d{min-height:0}.pl__c--hot{order:-1}}
+@media (prefers-reduced-motion:reduce){.pl__c,.pl__c:hover{transition:none;transform:none}}
 </style>
 </head>
 <body>
@@ -546,6 +578,7 @@ main{overflow-x:clip}
       <a href="#funciones">Funciones</a>
       <a href="#deteccion">Detección</a>
       <a href="#privacidad">Privacidad</a>
+      <a href="#planes">Planes</a>
       <a href="#preguntas">Preguntas</a>
       <a href="pasos.html">Cómo usarla</a>
       <a href="panel.html">Iniciar sesión</a>
@@ -560,6 +593,7 @@ main{overflow-x:clip}
     <a href="#funciones">Funciones</a>
     <a href="#deteccion">Detección</a>
     <a href="#privacidad">Privacidad</a>
+    <a href="#planes">Planes</a>
     <a href="#preguntas">Preguntas</a>
     <a href="pasos.html">Cómo usarla</a>
     <a class="btn btn--primary" href="#descargar">Descargar la beta</a>
@@ -883,7 +917,7 @@ main{overflow-x:clip}
       <h2 class="h2">Pide lo justo y te dice para qué.</h2>
       <p class="lead">SafeGrab maneja cámara, micrófono y ubicación, así que lo mínimo es ser claros con cada permiso.</p>
       <ul class="keep">
-        <li><svg class="ico"><use href="#i-check"/></svg><span><b>Todo queda en tu teléfono.</b> En esta versión la cuenta, los contactos y las grabaciones no se suben a ningún servidor.</span></li>
+        <li><svg class="ico"><use href="#i-check"/></svg><span><b>Solo tú ves tus datos.</b> Tu ubicación, tus contactos y tus grabaciones se guardan en tu cuenta, en un servidor protegido, y solo se abren desde tu panel. Nada se vende ni se usa para publicidad.</span></li>
         <li><svg class="ico"><use href="#i-check"/></svg><span><b>Un PIN propio.</b> Puedes pedir un PIN de SafeGrab para cancelar o detener una emergencia.</span></li>
         <li><svg class="ico"><use href="#i-check"/></svg><span><b>Sin sorpresas.</b> El administrador de dispositivo solo sirve para bloquear la pantalla. No borra ni lee nada.</span></li>
       </ul>
@@ -905,31 +939,97 @@ main{overflow-x:clip}
   <div class="wrap">
     <div class="sec-head">
       <h2 class="h2">Lo que ya funciona y lo que viene.</h2>
-      <p class="lead">La beta ya cubre la reacción dentro del teléfono. Lo siguiente es conectar tu celular con otros dispositivos y con tus contactos.</p>
+      <p class="lead">La beta ya cubre la reacción dentro del teléfono y el panel web para ver y controlar tu celular a distancia. Esto es lo que sigue.</p>
     </div>
 
     <div class="road">
       <div class="col col--now">
         <h3>Ya funciona en la beta</h3>
-        <p class="sub">Dentro de tu teléfono</p>
+        <p class="sub">En tu teléfono y en tu panel</p>
         <ul>
           <li><svg class="ico"><use href="#i-check"/></svg><span>Detección de jalón con sensibilidad ajustable</span></li>
           <li><svg class="ico"><use href="#i-check"/></svg><span>Sirena al máximo y bloqueo de pantalla</span></li>
           <li><svg class="ico"><use href="#i-check"/></svg><span>Grabación de video y audio</span></li>
           <li><svg class="ico"><use href="#i-check"/></svg><span>Mapa, dirección y mensaje por SMS o WhatsApp</span></li>
           <li><svg class="ico"><use href="#i-check"/></svg><span>Protección que sigue con la app cerrada</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span>SMS automático a tus contactos de confianza</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span>Panel web: ubicación, alertas y grabaciones en la nube</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span>Órdenes remotas: sonar, bloquear y ubicar<small>Con el plan Security.</small></span></li>
         </ul>
       </div>
       <div class="col col--next">
         <h3>En camino</h3>
-        <p class="sub">Cuando SafeGrab tenga servidor</p>
+        <p class="sub">Lo próximo</p>
         <ul>
-          <li><svg class="ico"><use href="#i-circle"/></svg><span>Alertas automáticas a tus contactos por internet<small>Sin tener que pulsar enviar.</small></span></li>
-          <li><svg class="ico"><use href="#i-circle"/></svg><span>Rastreo en vivo desde otro dispositivo<small>Para seguir el teléfono después del robo.</small></span></li>
-          <li><svg class="ico"><use href="#i-circle"/></svg><span>Evidencia guardada en la nube<small>Para que no se pierda junto con el teléfono.</small></span></li>
-          <li><svg class="ico"><use href="#i-circle"/></svg><span>Panel en esta página<small>Para ver el estado y los datos de tu teléfono.</small></span></li>
+          <li><svg class="ico"><use href="#i-circle"/></svg><span>Evidencia que se sube mientras se graba<small>Para que llegue aunque apaguen el teléfono a los pocos segundos.</small></span></li>
+          <li><svg class="ico"><use href="#i-circle"/></svg><span>Aviso de versión nueva dentro de la app<small>Para actualizar sin buscar el archivo.</small></span></li>
+          <li><svg class="ico"><use href="#i-circle"/></svg><span>Eliminar tu cuenta con un botón<small>Hoy se pide por correo.</small></span></li>
+          <li><svg class="ico"><use href="#i-circle"/></svg><span>Más pruebas en más marcas<small>Con los comentarios de quienes la usan.</small></span></li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== PLANES ===================== -->
+<section class="sec sec--light" id="planes">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2">Empieza gratis. Mejora cuando quieras ver más.</h2>
+      <p class="lead">La protección en tu teléfono no se cobra. Security te da el panel completo: grabaciones, órdenes remotas y más teléfonos.</p>
+    </div>
+
+    <div class="pl">
+      <article class="pl__c" data-plan="free">
+        <h3 class="pl__n">Básico</h3>
+        <p class="pl__d">La protección completa en tu teléfono.</p>
+        <div class="pl__p"><b>S/ 0</b><small>para siempre</small></div>
+        <ul class="pl__l">
+          <li><svg class="ico"><use href="#i-check"/></svg><span>Detección de arrebato, sirena y bloqueo</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span>SMS a 2 contactos de confianza</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span>1 teléfono con su ubicación y alertas en el panel</span></li>
+          <li class="no"><svg class="ico"><use href="#i-lock"/></svg><span>Las grabaciones se guardan, pero para verlas necesitas Security</span></li>
+          <li class="no"><svg class="ico"><use href="#i-lock"/></svg><span>Sin órdenes remotas desde el panel</span></li>
+        </ul>
+        <a class="btn btn--ghost" href="#descargar">Descargar gratis</a>
+      </article>
+
+      <article class="pl__c pl__c--hot" data-plan="security_month">
+        <span class="pl__tag" data-promo-tag hidden>Oferta de lanzamiento</span>
+        <h3 class="pl__n">Security</h3>
+        <p class="pl__d">El panel completo, mes a mes.</p>
+        <div class="pl__p"><b><span class="js-now">S/ 9.90</span></b><s class="js-old" hidden></s><small>por 1 mes</small></div>
+        <span class="pl__off js-off" hidden></span>
+        <ul class="pl__l">
+          <li><svg class="ico"><use href="#i-check"/></svg><span>Todo lo del plan Básico</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span>Ver y descargar las grabaciones de video y audio</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span>Hacer sonar, bloquear y ubicar tu teléfono a distancia</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span>Hasta 3 teléfonos en tu cuenta</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span>Hasta 10 contactos de confianza</span></li>
+        </ul>
+        <a class="btn btn--primary" href="panel.html#plan">Elegir Security</a>
+      </article>
+
+      <article class="pl__c" data-plan="security_year">
+        <span class="pl__tag" data-best-tag>Mejor precio</span>
+        <h3 class="pl__n">Security Anual</h3>
+        <p class="pl__d">Lo mismo que Security, por un año y más barato.</p>
+        <div class="pl__p"><b><span class="js-now">S/ 79.90</span></b><s class="js-old" hidden></s><small>por 12 meses · <span class="js-per">S/ 6.66 al mes</span></small></div>
+        <span class="pl__off js-off" hidden></span>
+        <ul class="pl__l">
+          <li><svg class="ico"><use href="#i-check"/></svg><span>Todo lo de Security</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span>Un solo pago al año</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span class="js-save">Ahorras frente a pagar mes a mes</span></li>
+        </ul>
+        <a class="btn btn--ghost" href="panel.html#plan">Elegir Security Anual</a>
+      </article>
+    </div>
+
+    <div class="pl__note">
+      <p><b>Pagas con tarjeta o Yape, sin renovación automática.</b> Cuando se acaba tu plan, tu cuenta vuelve a Básico.</p>
+      <p class="js-promo-until" hidden></p>
+      <p><a href="panel.html?demo#plan">Ver cómo se ve el pago (demostración)</a></p>
     </div>
   </div>
 </section>
@@ -949,7 +1049,7 @@ main{overflow-x:clip}
       </details>
       <details>
         <summary>¿Y si apagan el teléfono?</summary>
-        <p>Con el teléfono apagado no puede sonar ni detectar nada. Es un límite de cualquier app. Por eso la siguiente etapa guarda evidencia y ubicación fuera del teléfono.</p>
+        <p>Con el teléfono apagado no puede sonar ni detectar nada. Es un límite de cualquier app. Por eso la ubicación y las grabaciones se envían a tu cuenta mientras el teléfono sigue encendido: lo que alcanzó a subirse queda guardado y lo ves en tu panel.</p>
       </details>
       <details>
         <summary>¿Quién puede cancelar una emergencia?</summary>
@@ -961,7 +1061,7 @@ main{overflow-x:clip}
       </details>
       <details>
         <summary>¿Cuánto cuesta?</summary>
-        <p>Durante la beta no se cobra. Cuando salga la versión final, el precio se anunciará en esta página.</p>
+        <p>Puedes empezar gratis con el plan Básico. El plan Security agrega el panel completo (grabaciones, órdenes remotas y más teléfonos). Los precios y la oferta de lanzamiento están en la sección <a href="#planes">Planes</a>.</p>
       </details>
       <details>
         <summary>¿SafeGrab reemplaza a la policía?</summary>
@@ -1005,6 +1105,7 @@ main{overflow-x:clip}
         <code id="dl-sha"></code>
         <button type="button" class="dl__copy" id="dl-copy">Copiar huella</button>
       </details>
+      <p class="dl__upd" style="margin-bottom:10px">Con el plan Básico (gratis) tienes la protección completa en tu teléfono. <a href="#planes">Mira qué suma Security</a>.</p>
       <p class="dl__upd">¿Venías de una versión de prueba anterior y Android dice «conflicto con un paquete existente»? Desinstala la anterior una sola vez y vuelve a instalar; desde esta versión las actualizaciones se instalan encima, sin perder tus datos.</p>
     </div>
   </div>
@@ -1023,6 +1124,7 @@ main{overflow-x:clip}
       <a href="#como">Cómo funciona</a>
       <a href="#funciones">Funciones</a>
       <a href="#privacidad">Privacidad</a>
+      <a href="#planes">Planes</a>
       <a href="#ruta">Hoja de ruta</a>
       <a href="#preguntas">Preguntas</a>
       <a href="pasos.html">Cómo usarla</a>
@@ -1080,6 +1182,42 @@ main{overflow-x:clip}
     });
   });
   function setText(sel, txt){ var el = $(sel); if (el) el.textContent = txt }
+  /* ---- Precios en vivo: salen de la base de datos (plan_catalog), así lo que ves aquí es lo que se cobra.
+        Si no carga, quedan los precios escritos en el HTML. ---- */
+  (function(){
+    var URL_ = "https://mhhgmpuhwnhpjmoejwtf.supabase.co", KEY_ = "sb_publishable_g_aQSV6VkdoyO0Qt2JGfZw_SLQkrgBh";
+    function sol(c){ return "S/ " + (c/100).toFixed(2) }
+    if (!window.fetch) return;
+    fetch(URL_ + "/rest/v1/plan_catalog?select=code,months,price_cents,promo_price_cents,promo_until&order=sort", {headers:{apikey:KEY_}})
+      .then(function(r){ if (!r.ok) throw new Error("x"); return r.json() })
+      .then(function(rows){
+        var now = Date.now(), until = null, month = null;
+        rows.forEach(function(p){ if (p.code === "security_month") month = p });
+        rows.forEach(function(p){
+          var card = document.querySelector('[data-plan="' + p.code + '"]'); if (!card) return;
+          var promo = p.promo_price_cents && (!p.promo_until || Date.parse(p.promo_until) > now);
+          var cur = promo ? p.promo_price_cents : p.price_cents;
+          card.querySelector(".js-now").textContent = sol(cur);
+          var old = card.querySelector(".js-old"), off = card.querySelector(".js-off"), tag = card.querySelector("[data-promo-tag]");
+          if (promo){
+            old.textContent = sol(p.price_cents); old.hidden = false;
+            off.textContent = "Oferta: -" + Math.round((1 - cur/p.price_cents)*100) + "%"; off.hidden = false;
+            if (tag) tag.hidden = false;
+            if (p.promo_until) until = p.promo_until;
+          } else { old.hidden = true; off.hidden = true; if (tag) tag.hidden = true }
+          var per = card.querySelector(".js-per"); if (per) per.textContent = sol(cur/p.months) + " al mes";
+          var save = card.querySelector(".js-save");
+          if (save && month){
+            var mcur = (month.promo_price_cents && (!month.promo_until || Date.parse(month.promo_until) > now)) ? month.promo_price_cents : month.price_cents;
+            var diff = mcur*p.months - cur;
+            if (diff > 0) save.textContent = "Ahorras " + sol(diff) + " frente a pagar mes a mes";
+          }
+        });
+        var u = document.querySelector(".js-promo-until");
+        if (u && until){ u.textContent = "Precio de lanzamiento hasta el " + new Date(until).toLocaleDateString("es-PE", {day:"numeric", month:"long", year:"numeric"}) + "."; u.hidden = false }
+      }).catch(function(){});
+  })();
+
   function enableDownload(v){
     dlReady = true;
     dlBtn.setAttribute("href", v.apk_url);
@@ -1800,7 +1938,7 @@ main{overflow-x:clip}
   /* ---------- Apariciones al hacer scroll ---------- */
   var groups = [
     [".sec-head .lead", 0], [".step", 1], [".card", 1], [".lock__phone", 0, "rv--l"], [".lock > div:last-child .lead, .lock .keep li, .lock__note", 1, "rv--r"],
-    [".gest", 1], [".detect__ctl, .sens", 0], [".plist > *", 1], [".road .col", 1], [".faq details", 1], [".cta .lead, .cta .hero__cta, .cta .hero__note, .cta .dl", 1]
+    [".gest", 1], [".detect__ctl, .sens", 0], [".plist > *", 1], [".road .col", 1], [".faq details", 1], [".pl__c", 1], [".cta .lead, .cta .hero__cta, .cta .hero__note, .cta .dl", 1]
   ];
   var targets = [];
   groups.forEach(function(g){

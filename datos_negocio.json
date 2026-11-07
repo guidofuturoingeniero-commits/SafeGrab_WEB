@@ -1,0 +1,20 @@
+{
+  "_ayuda": "Llena los campos y luego corre:  python aplicar_datos.py   (en esta misma carpeta). Los que dicen OPCIONAL pueden quedar vacíos.",
+  "razon_social": "",
+  "ruc": "",
+  "direccion": "",
+  "whatsapp": "",
+  "telefono": "",
+  "correo": "safegrabcompany@gmail.com",
+  "horario": "",
+
+  "_ejemplos": {
+    "razon_social": "Nombre completo de la persona o empresa que vende (el que sale en tu RUC)",
+    "ruc": "11 dígitos, sin espacios",
+    "direccion": "Calle y número, distrito, ciudad. Ej.: Av. Ejemplo 123, Miraflores, Lima",
+    "whatsapp": "Con código de país y solo números. Ej.: 51999999999",
+    "telefono": "OPCIONAL. Con código de país. Ej.: +51 1 234 5678",
+    "correo": "Ya viene con el de SafeGrab; cámbialo si usas otro",
+    "horario": "OPCIONAL. Ej.: Lunes a viernes, 9:00 a 18:00 (hora de Lima)"
+  }
+}

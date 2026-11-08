@@ -1,11 +1,11 @@
 {
   "version": "1.0.0",
   "build": 1,
-  "released": "2026-11-04",
+  "released": "2026-11-08",
   "apk_url": "https://github.com/guidofuturoingeniero-commits/SafeGrab_WEB/releases/latest/download/SafeGrab.apk",
-  "size_bytes": 67131735,
-  "sha256": "5067bd412fcc2d6dd0a8f7d98860b2c70f213e7d26315b6229698ff50a16d0c5",
+  "size_bytes": 67181043,
+  "sha256": "6d8410bd766b512943cee9afabf9ff9dbbb2eb97fe0a7d58d1f8f4e294f85d7c",
   "min_android": null,
-  "notes": "v1.0.0: escudo, apagado falso, dos sensibilidades, planes",
+  "notes": "Proteccion continua (PIN al apagar), alarma sin conexion, bloqueo mas rapido, PIN con hash",
   "signer_sha256": "ffe97e3faa65691934474d39f0dbdf366f20144f94bb1bf85694d2275eed868f"
 }
